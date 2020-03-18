@@ -10,12 +10,18 @@ import UIKit
 
 class RecipesListViewController: UIViewController {
 
+  private var mainView: RecipesListView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    
+    view.backgroundColor = .yellow
+    mainView = RecipesListView(delegate: self)
+    view = mainView
     view.backgroundColor = .yellow
   }
-
-
 }
 
+
+extension RecipesListViewController: RecipesListDelegate {  
+}
