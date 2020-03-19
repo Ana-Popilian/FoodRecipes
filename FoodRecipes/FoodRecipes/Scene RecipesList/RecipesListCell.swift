@@ -18,7 +18,7 @@ final class RecipesListCell: UITableViewCell, Identifiable {
   private enum ViewTrait {
     static let defaultHorizontalSpacing: CGFloat = 15
     static let titleTopPaddind: CGFloat = 35
-    static let imageContainerViewHorizontalSpacing: CGFloat = 20
+    static let imageViewHorizontalSpacing: CGFloat = 20
   }
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -36,7 +36,6 @@ final class RecipesListCell: UITableViewCell, Identifiable {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 }
 
 
@@ -91,7 +90,7 @@ private extension RecipesListCell {
       recipeContainerView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
       recipeContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
       
-      recipeImageView.leadingAnchor.constraint(equalTo: recipeContainerView.leadingAnchor, constant: ViewTrait.imageContainerViewHorizontalSpacing),
+      recipeImageView.leadingAnchor.constraint(equalTo: recipeContainerView.leadingAnchor, constant: ViewTrait.imageViewHorizontalSpacing),
       recipeImageView.centerYAnchor.constraint(equalTo: recipeContainerView.centerYAnchor),
       recipeImageView.heightAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),
       recipeImageView.widthAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),

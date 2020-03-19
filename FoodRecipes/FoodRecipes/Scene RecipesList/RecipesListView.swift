@@ -50,13 +50,13 @@ private extension RecipesListView {
 extension RecipesListView: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     20
-   }
+    20
+  }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: RecipesListCell.identifier, for: indexPath) as! RecipesListCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: RecipesListCell.identifier, for: indexPath) as! RecipesListCell
     
-       return cell
+    return cell
   }
 }
 

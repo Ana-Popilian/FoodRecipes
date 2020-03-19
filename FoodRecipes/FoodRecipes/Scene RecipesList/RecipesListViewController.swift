@@ -15,7 +15,7 @@ class RecipesListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .yellow
+    
     mainView = RecipesListView(delegate: self)
     view = mainView
     view.backgroundColor = .yellow

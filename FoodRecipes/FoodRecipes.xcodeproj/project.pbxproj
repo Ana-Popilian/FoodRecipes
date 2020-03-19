@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A16133912423848B004344A5 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16133902423848B004344A5 /* FilterCollectionViewCell.swift */; };
+		A161339324238F25004344A5 /* FilterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */; };
 		A16282612421233900F7AF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16282602421233900F7AF1D /* AppDelegate.swift */; };
 		A162826A2421233F00F7AF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16282692421233F00F7AF1D /* Assets.xcassets */; };
 		A162826D2421233F00F7AF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A16133902423848B004344A5 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A162825D2421233900F7AF1D /* FoodRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16282602421233900F7AF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16282642421233900F7AF1D /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			children = (
 				A1EE902C242236BD00BA4EB9 /* FilterRecipeView.swift */,
 				A1EE902E242236F300BA4EB9 /* FilterRecipeViewController.swift */,
+				A16133902423848B004344A5 /* FilterCollectionViewCell.swift */,
+				A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */,
 			);
 			path = "Scene FilterRecipe";
 			sourceTree = "<group>";
@@ -182,12 +188,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16282762421255600F7AF1D /* RecipesListViewController.swift in Sources */,
+				A16133912423848B004344A5 /* FilterCollectionViewCell.swift in Sources */,
 				A1EE903124223A0800BA4EB9 /* RecipesListCell.swift in Sources */,
 				A1EE9034242248AF00BA4EB9 /* Protocols.swift in Sources */,
 				A1EE902F242236F300BA4EB9 /* FilterRecipeViewController.swift in Sources */,
 				A1EE90372422493700BA4EB9 /* UIView+Additions.swift in Sources */,
 				A16282752421252800F7AF1D /* RecipesListView.swift in Sources */,
 				A1EE902D242236BD00BA4EB9 /* FilterRecipeView.swift in Sources */,
+				A161339324238F25004344A5 /* FilterCollectionViewLayout.swift in Sources */,
 				A16282612421233900F7AF1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
