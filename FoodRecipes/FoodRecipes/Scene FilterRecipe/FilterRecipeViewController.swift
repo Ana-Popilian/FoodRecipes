@@ -17,7 +17,7 @@ class FilterRecipeViewController: UIViewController {
     
     mainView = FilterRecipeView(delegate: self)
     view = mainView
-    view.backgroundColor = .yellow
+    view.backgroundColor = .green
   }
 }
 

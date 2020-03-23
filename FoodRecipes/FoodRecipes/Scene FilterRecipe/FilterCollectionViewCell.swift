@@ -15,6 +15,9 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
+    backgroundColor = .systemBlue
+    layer.cornerRadius = 35
+    
     setupFilterNamaLabel()
     
     addSubViews()
@@ -43,15 +46,17 @@ private extension FilterCollectionViewCell {
 private extension FilterCollectionViewCell {
   
   func addSubViews() {
+    
     addSubviewWithoutConstr(filterNameLabel)
   }
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      filterNameLabel.topAnchor.constraint(equalTo: topAnchor),
-      filterNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-      filterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      filterNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+      
+      filterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+      filterNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+      filterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5),
+      filterNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5)
     ])
   }
 }
