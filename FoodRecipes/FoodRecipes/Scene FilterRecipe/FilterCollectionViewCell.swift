@@ -15,8 +15,8 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .systemBlue
-    layer.cornerRadius = 35
+    backgroundColor = .systemRed
+    layer.cornerRadius = 40
     
     setupFilterNamaLabel()
     
@@ -24,8 +24,13 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
     setupConstraints()
   }
   
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func bindCell(with healthRestr: String) {
+    filterNameLabel.text = healthRestr
   }
 }
 
@@ -53,10 +58,10 @@ private extension FilterCollectionViewCell {
   func setupConstraints() {
     NSLayoutConstraint.activate([
       
-      filterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-      filterNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-      filterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5),
-      filterNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5)
+      filterNameLabel.topAnchor.constraint(equalTo: topAnchor),
+      filterNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+      filterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      filterNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }
 }

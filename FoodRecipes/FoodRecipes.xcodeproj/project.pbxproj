@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10E22F9242A4429002E65E5 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E22F8242A4429002E65E5 /* RecipeModel.swift */; };
+		A10E22FC242A4CA3002E65E5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E22FB242A4CA3002E65E5 /* NetworkManager.swift */; };
 		A16133912423848B004344A5 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16133902423848B004344A5 /* FilterCollectionViewCell.swift */; };
-		A161339324238F25004344A5 /* FilterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */; };
 		A16282612421233900F7AF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16282602421233900F7AF1D /* AppDelegate.swift */; };
 		A162826A2421233F00F7AF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16282692421233F00F7AF1D /* Assets.xcassets */; };
 		A162826D2421233F00F7AF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */; };
@@ -22,8 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10E22F8242A4429002E65E5 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		A10E22FB242A4CA3002E65E5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A16133902423848B004344A5 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
-		A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A162825D2421233900F7AF1D /* FoodRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16282602421233900F7AF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16282642421233900F7AF1D /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10E22FA242A4C48002E65E5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A10E22FB242A4CA3002E65E5 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A16282542421233900F7AF1D = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +82,7 @@
 				A1EE902B2422366700BA4EB9 /* Scene RecipesList */,
 				A16282602421233900F7AF1D /* AppDelegate.swift */,
 				A1EE90322422489C00BA4EB9 /* Protocols */,
+				A10E22FA242A4C48002E65E5 /* Services */,
 				A1EE90352422490900BA4EB9 /* Extensions */,
 				A16282692421233F00F7AF1D /* Assets.xcassets */,
 				A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */,
@@ -86,7 +97,6 @@
 				A1EE902C242236BD00BA4EB9 /* FilterRecipeView.swift */,
 				A1EE902E242236F300BA4EB9 /* FilterRecipeViewController.swift */,
 				A16133902423848B004344A5 /* FilterCollectionViewCell.swift */,
-				A161339224238F25004344A5 /* FilterCollectionViewLayout.swift */,
 			);
 			path = "Scene FilterRecipe";
 			sourceTree = "<group>";
@@ -97,6 +107,7 @@
 				A16282742421252800F7AF1D /* RecipesListView.swift */,
 				A16282642421233900F7AF1D /* RecipesListViewController.swift */,
 				A1EE903024223A0800BA4EB9 /* RecipesListCell.swift */,
+				A10E22F8242A4429002E65E5 /* RecipeModel.swift */,
 			);
 			path = "Scene RecipesList";
 			sourceTree = "<group>";
@@ -127,6 +138,7 @@
 				A16282592421233900F7AF1D /* Sources */,
 				A162825A2421233900F7AF1D /* Frameworks */,
 				A162825B2421233900F7AF1D /* Resources */,
+				A10E22FD242A63A2002E65E5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -182,12 +194,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A10E22FD242A63A2002E65E5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config \"$SRCROOT/.swiftlint.yml\"\n  else\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A16282592421233900F7AF1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10E22FC242A4CA3002E65E5 /* NetworkManager.swift in Sources */,
 				A16282762421255600F7AF1D /* RecipesListViewController.swift in Sources */,
+				A10E22F9242A4429002E65E5 /* RecipeModel.swift in Sources */,
 				A16133912423848B004344A5 /* FilterCollectionViewCell.swift in Sources */,
 				A1EE903124223A0800BA4EB9 /* RecipesListCell.swift in Sources */,
 				A1EE9034242248AF00BA4EB9 /* Protocols.swift in Sources */,
@@ -195,7 +230,6 @@
 				A1EE90372422493700BA4EB9 /* UIView+Additions.swift in Sources */,
 				A16282752421252800F7AF1D /* RecipesListView.swift in Sources */,
 				A1EE902D242236BD00BA4EB9 /* FilterRecipeView.swift in Sources */,
-				A161339324238F25004344A5 /* FilterCollectionViewLayout.swift in Sources */,
 				A16282612421233900F7AF1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

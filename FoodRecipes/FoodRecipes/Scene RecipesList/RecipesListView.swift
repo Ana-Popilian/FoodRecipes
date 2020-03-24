@@ -26,6 +26,7 @@ final class RecipesListView: UIView {
     setupConstraints()
   }
   
+  @available(*, unavailable)
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -54,6 +55,7 @@ extension RecipesListView: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //swiftlint:disable force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: RecipesListCell.identifier, for: indexPath) as! RecipesListCell
     
     return cell
