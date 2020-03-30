@@ -11,5 +11,5 @@ import Foundation
 struct RecipeData {
   let ingredient: String
   let healthRestr: [String]
-  let dietRestr: String
+  let dietRestr: String?
 }

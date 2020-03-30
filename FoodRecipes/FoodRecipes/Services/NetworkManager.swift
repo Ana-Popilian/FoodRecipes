@@ -11,9 +11,13 @@ import UIKit
 final class NetworkManager: NSObject {
   
   
-  func getRecipes(ingr: String, diet: String, healths: [String], completionHandler: @escaping (_ recipes: RecipeModel) -> Void) {
+  func getRecipes(ingr: String, diet: String?, healths: [String], completionHandler: @escaping (_ recipes: RecipeModel) -> Void) {
     
-    var urlString = "https://api.edamam.com/search?q=\(ingr)&app_id=a23ceb61&app_key=4ae1251cbb5c580cdef496445cd67bbf&from=0&to=100&calories=591-722&diet=\(diet)"
+    var urlString = "https://api.edamam.com/search?q=\(ingr)&app_id=a23ceb61&app_key=4ae1251cbb5c580cdef496445cd67bbf&from=0&to=100&calories=591-722"
+    
+    if let diet = diet {
+      urlString.append("&diet=\(diet)")
+    }
     
     for health in healths {
       urlString.append("&health=\(health)")

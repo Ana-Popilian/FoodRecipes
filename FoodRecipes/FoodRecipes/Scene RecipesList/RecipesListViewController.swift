@@ -29,12 +29,6 @@ class RecipesListViewController: UIViewController {
   override func loadView() {
     mainView = RecipesListView(delegate: self)
     view = mainView
-  
-  }
-  
-  func passDataToView(modelData: RecipeModel) -> RecipeModel {
-    let data = modelData
-    return data
   }
   
   override func viewDidLoad() {
@@ -43,5 +37,4 @@ class RecipesListViewController: UIViewController {
 }
 
 extension RecipesListViewController: RecipesListDelegate {
-  
 }

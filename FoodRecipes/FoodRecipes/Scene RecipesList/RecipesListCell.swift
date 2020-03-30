@@ -61,7 +61,6 @@ private extension RecipesListCell {
   
   func setupRecipeImageView() {
     recipeImageView = UIImageView()
-    recipeImageView.image = UIImage(named: "pasta")
     recipeImageView.clipsToBounds = true
     recipeImageView.layer.cornerRadius = 24
     recipeImageView.contentMode = .scaleAspectFit

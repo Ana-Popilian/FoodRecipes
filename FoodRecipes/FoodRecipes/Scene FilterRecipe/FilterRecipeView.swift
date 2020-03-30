@@ -21,7 +21,7 @@ final class FilterRecipeView: UIView {
   private var healthRestrictionLabel: UILabel!
   private var healthFilterCollectionView: UICollectionView!
   private var searchRecipesButton: UIButton!
- 
+  
   private var typedIngredient: String!
   private var selectedDietParameter: String!
   private var selectedHealthParameters = [String]()
@@ -92,11 +92,12 @@ private extension FilterRecipeView {
   }
   
   func setupSearchRecipesButton() {
-    searchRecipesButton = UIButton()
+    searchRecipesButton = CustomButton()
     searchRecipesButton.setTitle("Search recipes", for: .normal)
     searchRecipesButton.layer.cornerRadius = 18
     searchRecipesButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     searchRecipesButton.backgroundColor = .systemGreen
+    searchRecipesButton.isEnabled = false
   }
   
   func getDefaultLabel() -> UILabel {
@@ -130,19 +131,15 @@ extension FilterRecipeView: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     let word = searchText
     typedIngredient = word
-  }
-}
-
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension FilterRecipeView: UICollectionViewDelegateFlowLayout {
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 175, height: 55)
+    searchRecipesButton.isEnabled = !word.isBlank
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 25, left: 5, bottom: 25, right: 5)
+  func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if text.contains(" ") || text.contains(".") {
+      return false
+    }
+    
+    return true
   }
 }
 
@@ -156,7 +153,6 @@ extension FilterRecipeView: UICollectionViewDataSource {
     }
     return healthFilters.count
   }
-  
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     

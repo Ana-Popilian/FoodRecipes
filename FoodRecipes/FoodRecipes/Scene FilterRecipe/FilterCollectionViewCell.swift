@@ -51,7 +51,7 @@ private extension FilterCollectionViewCell {
 private extension FilterCollectionViewCell {
   
   func addSubViews() {
-    
+
     addSubviewWithoutConstr(filterNameLabel)
   }
   
