@@ -12,26 +12,36 @@ class RecipesListViewController: UIViewController {
   
   private var mainView: RecipesListView!
   private var network: NetworkManager!
+  private var modelData: RecipeModel!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  required init(withModel model: RecipeModel) {
+    super.init(nibName: nil, bundle: nil)
+    modelData = model
     
-    
+    print(model)
+  }
+  
+  //swiftlint:disable unavailable_function
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func loadView() {
     mainView = RecipesListView(delegate: self)
     view = mainView
-    view.backgroundColor = .yellow
-    
-    network = NetworkManager()
-    network.getRecipes(ingr: "flour", diet: "balanced", health: "peanut-free", completionHandler: { [weak self] (result) in
-      DispatchQueue.main.async {
-        //         self?.mainView.updateData(result) }
-        print(result)
-      }
-      
-    })
+  
+  }
+  
+  func passDataToView(modelData: RecipeModel) -> RecipeModel {
+    let data = modelData
+    return data
+  }
+  
+  override func viewDidLoad() {
+    mainView.updateRecipeData(modelData)
   }
 }
 
-  extension RecipesListViewController: RecipesListDelegate {
+extension RecipesListViewController: RecipesListDelegate {
   
 }

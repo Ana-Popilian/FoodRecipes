@@ -37,6 +37,16 @@ final class RecipesListCell: UITableViewCell, Identifiable {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
+  func bindCell(_ model: Hit) {
+    recipeNameLabel.text = model.recipe.label
+    let calories = Int(model.recipe.calories)
+    caloriesValueLabel.text = "Calories: \(calories)"
+    
+    let imageUrl = model.recipe.image
+    recipeImageView.downloadImage(from: imageUrl, downloadFinishedHandler: {
+    })
+  }
 }
 
 
@@ -49,7 +59,6 @@ private extension RecipesListCell {
     recipeContainerView.backgroundColor = .systemYellow
   }
   
-  
   func setupRecipeImageView() {
     recipeImageView = UIImageView()
     recipeImageView.image = UIImage(named: "pasta")
@@ -59,17 +68,19 @@ private extension RecipesListCell {
   }
   
   func setupRecipeNameLabel() {
-    recipeNameLabel = UILabel()
-    recipeNameLabel.text = "Pasta carbonara"
-    recipeNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    recipeNameLabel.textColor = .black
+    recipeNameLabel = getDefaultLabel()
+    recipeNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
   }
   
   func setupCaloriesValueLabel() {
-    caloriesValueLabel = UILabel()
+    caloriesValueLabel = getDefaultLabel()
     caloriesValueLabel.font = UIFont.systemFont(ofSize: 14)
-    caloriesValueLabel.textColor = .black
-    caloriesValueLabel.text = "Calories: 435"
+  }
+  
+  func getDefaultLabel() -> UILabel {
+    let label = UILabel()
+    label.textColor = .black
+    return label
   }
 }
 

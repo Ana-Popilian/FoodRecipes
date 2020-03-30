@@ -10,15 +10,16 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-var window: UIWindow?
+  
+  var window: UIWindow?
   // swiftlint:disable discouraged_optional_collection
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    let viewController = RecipesListViewController()
-       window?.rootViewController = viewController
-       window?.makeKeyAndVisible()
+    let viewController = FilterRecipeViewController()
+    let navigation = UINavigationController(rootViewController: viewController)
+    window?.rootViewController = navigation
+    window?.makeKeyAndVisible()
     
     return true
   }

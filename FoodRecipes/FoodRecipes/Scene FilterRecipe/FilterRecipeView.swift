@@ -9,24 +9,29 @@
 import UIKit
 
 protocol FilterRecipeDelegate: UIViewController {
+  func didSelectedSearchRecipes(withDetails details: RecipeData)
 }
 
 final class FilterRecipeView: UIView {
   
+  private weak var delegate: FilterRecipeDelegate?
   private var searchBar: UISearchBar!
   private var dietaryHeaderLabel: UILabel!
   private var dietFilterCollectionView: UICollectionView!
   private var healthRestrictionLabel: UILabel!
   private var healthFilterCollectionView: UICollectionView!
   private var searchRecipesButton: UIButton!
-  private weak var delegate: FilterRecipeDelegate?
+ 
+  private var typedIngredient: String!
+  private var selectedDietParameter: String!
+  private var selectedHealthParameters = [String]()
   
   let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
-  let healthFilters: Array = ["peanut-free", "tree-nut-free", "alcohol-free", "vegetarian", "vegan", "sugar-conscious"]
+  let healthFilters = ["peanut-free", "tree-nut-free", "alcohol-free", "vegetarian", "vegan", "sugar-conscious"]
   
   private enum VT {
-    static let topContraint: CGFloat = 20
-    static let dietCollMult: CGFloat = 0.25
+    static let topContraint: CGFloat = 15
+    static let dietCollMult: CGFloat = 0.23
     static let searchButtonHeight: CGFloat = 45
     static let searchButtonLead: CGFloat = 35
   }
@@ -50,6 +55,10 @@ final class FilterRecipeView: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
+  func prepareParametersForParser() -> RecipeData {
+    return RecipeData(ingredient: typedIngredient, healthRestr: selectedHealthParameters, dietRestr: selectedDietParameter)
+  }
 }
 
 
@@ -60,14 +69,12 @@ private extension FilterRecipeView {
     searchBar = UISearchBar()
     searchBar.placeholder = "Search recipe by ingredient"
     searchBar.isTranslucent = false
+    searchBar.delegate = self
   }
   
   func setupDietaryHeaderLabel() {
-    dietaryHeaderLabel = UILabel()
-    dietaryHeaderLabel.text = "Dietary Restictions"
-    dietaryHeaderLabel.textAlignment = .center
-    dietaryHeaderLabel.textColor = .systemOrange
-    dietaryHeaderLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    dietaryHeaderLabel = getDefaultLabel()
+    dietaryHeaderLabel.text = "Dietary Restrictions"
   }
   
   func setupDietFilterCollectionView() {
@@ -75,11 +82,8 @@ private extension FilterRecipeView {
   }
   
   func setupHealthRestrictionLabel() {
-    healthRestrictionLabel = UILabel()
+    healthRestrictionLabel = getDefaultLabel()
     healthRestrictionLabel.text = "Health Restictions"
-    healthRestrictionLabel.textAlignment = .center
-    healthRestrictionLabel.textColor = .systemOrange
-    healthRestrictionLabel.font = UIFont.boldSystemFont(ofSize: 16)
   }
   
   func setupHealthFilterCollectionView() {
@@ -95,6 +99,14 @@ private extension FilterRecipeView {
     searchRecipesButton.backgroundColor = .systemGreen
   }
   
+  func getDefaultLabel() -> UILabel {
+    let label = UILabel()
+    label.textAlignment = .center
+    label.textColor = .systemOrange
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    return label
+  }
+  
   func getDefaultCollectionView() -> UICollectionView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     collectionView.dataSource = self
@@ -106,7 +118,18 @@ private extension FilterRecipeView {
   }
   
   @objc func buttonPressed() {
-    // when pressed display the list
+    let details = RecipeData(ingredient: typedIngredient, healthRestr: selectedHealthParameters, dietRestr: selectedDietParameter)
+    delegate?.didSelectedSearchRecipes(withDetails: details)
+  }
+}
+
+
+// MARK: - UISearchBarDelegate
+extension FilterRecipeView: UISearchBarDelegate {
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    let word = searchText
+    typedIngredient = word
   }
 }
 
@@ -159,10 +182,32 @@ extension FilterRecipeView: UICollectionViewDataSource {
 // MARK: - UIcollectionViewDelegate
 extension FilterRecipeView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //implement later
+    if collectionView == dietFilterCollectionView {
+      let cell = collectionView.cellForItem(at: indexPath)
+      cell?.backgroundColor = UIColor.purple
+      
+      let diet = dietaryFilters[indexPath.item]
+      selectedDietParameter = diet
+      
+    } else {
+      let cell = collectionView.cellForItem(at: indexPath)
+      cell?.backgroundColor = UIColor.purple
+      
+      let health = healthFilters[indexPath.item]
+      selectedHealthParameters.append(health)
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if collectionView == healthFilterCollectionView {
+      let health = healthFilters[indexPath.item]
+      let index = selectedHealthParameters.firstIndex(of: health)!
+      selectedHealthParameters.remove(at: index)
+    }
+    let cell = collectionView.cellForItem(at: indexPath as IndexPath)
+    cell?.backgroundColor = UIColor.red
   }
 }
-
 
 // MARK: - Constraints Zone
 private extension FilterRecipeView {
@@ -199,7 +244,7 @@ private extension FilterRecipeView {
       healthFilterCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
       healthFilterCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
       
-      searchRecipesButton.topAnchor.constraint(equalTo: healthFilterCollectionView.bottomAnchor),
+      searchRecipesButton.topAnchor.constraint(equalTo: healthFilterCollectionView.bottomAnchor, constant: VT.topContraint),
       searchRecipesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.searchButtonLead),
       searchRecipesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.searchButtonLead),
       searchRecipesButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),

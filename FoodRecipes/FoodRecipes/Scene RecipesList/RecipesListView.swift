@@ -9,12 +9,14 @@
 import UIKit
 
 protocol RecipesListDelegate: UIViewController {
+
 }
 
 final class RecipesListView: UIView {
   
   private var recipesListTableView: UITableView!
   private weak var delegate: RecipesListDelegate?
+  private var recipeData: RecipeModel!
   
   required init(delegate: RecipesListDelegate?) {
     super.init(frame: .zero)
@@ -29,6 +31,10 @@ final class RecipesListView: UIView {
   @available(*, unavailable)
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func updateRecipeData(_ data: RecipeModel) {
+    recipeData = data
   }
 }
 
@@ -51,12 +57,14 @@ private extension RecipesListView {
 extension RecipesListView: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    20
+    return recipeData!.hits.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //swiftlint:disable force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: RecipesListCell.identifier, for: indexPath) as! RecipesListCell
+    let data = recipeData?.hits[indexPath.row]
+    cell.bindCell(data!)
     
     return cell
   }
