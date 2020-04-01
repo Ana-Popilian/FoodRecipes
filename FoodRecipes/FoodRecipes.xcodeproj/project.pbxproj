@@ -27,6 +27,9 @@
 		A1EE903124223A0800BA4EB9 /* RecipesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE903024223A0800BA4EB9 /* RecipesListCell.swift */; };
 		A1EE9034242248AF00BA4EB9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE9033242248AF00BA4EB9 /* Protocols.swift */; };
 		A1EE90372422493700BA4EB9 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE90362422493700BA4EB9 /* UIView+Additions.swift */; };
+		A1FA22CA24336E640022FAFD /* IngredientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22C924336E640022FAFD /* IngredientsListView.swift */; };
+		A1FA22CC24336FAC0022FAFD /* IngredientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22CB24336FAC0022FAFD /* IngredientsListViewController.swift */; };
+		A1FA22CE243371CB0022FAFD /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22CD243371CB0022FAFD /* IngredientsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		A1EE903024223A0800BA4EB9 /* RecipesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListCell.swift; sourceTree = "<group>"; };
 		A1EE9033242248AF00BA4EB9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A1EE90362422493700BA4EB9 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		A1FA22C924336E640022FAFD /* IngredientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListView.swift; sourceTree = "<group>"; };
+		A1FA22CB24336FAC0022FAFD /* IngredientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewController.swift; sourceTree = "<group>"; };
+		A1FA22CD243371CB0022FAFD /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 				A17E41E82432396C00BE4FE7 /* CommonViews */,
 				A1EE902A2422364400BA4EB9 /* Scene FilterRecipe */,
 				A1EE902B2422366700BA4EB9 /* Scene RecipesList */,
+				A1FA22C824336DF30022FAFD /* Scene Ingredients List */,
 				A16282602421233900F7AF1D /* AppDelegate.swift */,
 				A1EE90322422489C00BA4EB9 /* Protocols */,
 				A10E22FA242A4C48002E65E5 /* Services */,
@@ -163,6 +170,16 @@
 				A17E41EB24324FE200BE4FE7 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1FA22C824336DF30022FAFD /* Scene Ingredients List */ = {
+			isa = PBXGroup;
+			children = (
+				A1FA22C924336E640022FAFD /* IngredientsListView.swift */,
+				A1FA22CB24336FAC0022FAFD /* IngredientsListViewController.swift */,
+				A1FA22CD243371CB0022FAFD /* IngredientsTableViewCell.swift */,
+			);
+			path = "Scene Ingredients List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +279,9 @@
 				A10E22F9242A4429002E65E5 /* RecipeModel.swift in Sources */,
 				A16133912423848B004344A5 /* FilterCollectionViewCell.swift in Sources */,
 				A1EE903124223A0800BA4EB9 /* RecipesListCell.swift in Sources */,
+				A1FA22CC24336FAC0022FAFD /* IngredientsListViewController.swift in Sources */,
 				A17E41E124321C4F00BE4FE7 /* UIImageViewDownload.swift in Sources */,
+				A1FA22CA24336E640022FAFD /* IngredientsListView.swift in Sources */,
 				A1EE9034242248AF00BA4EB9 /* Protocols.swift in Sources */,
 				A1EE902F242236F300BA4EB9 /* FilterRecipeViewController.swift in Sources */,
 				A1EE90372422493700BA4EB9 /* UIView+Additions.swift in Sources */,
@@ -273,6 +292,7 @@
 				A17E41EA2432397900BE4FE7 /* CustomButton.swift in Sources */,
 				A17E41EC24324FE200BE4FE7 /* StringExtension.swift in Sources */,
 				A17E41E324321DB800BE4FE7 /* ImageFetcher.swift in Sources */,
+				A1FA22CE243371CB0022FAFD /* IngredientsTableViewCell.swift in Sources */,
 				A1EE902D242236BD00BA4EB9 /* FilterRecipeView.swift in Sources */,
 				A16282612421233900F7AF1D /* AppDelegate.swift in Sources */,
 			);

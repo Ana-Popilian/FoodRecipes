@@ -138,7 +138,6 @@ extension FilterRecipeView: UISearchBarDelegate {
     if text.contains(" ") || text.contains(".") {
       return false
     }
-    
     return true
   }
 }
@@ -204,6 +203,7 @@ extension FilterRecipeView: UICollectionViewDelegate {
     cell?.backgroundColor = UIColor.red
   }
 }
+
 
 // MARK: - Constraints Zone
 private extension FilterRecipeView {
