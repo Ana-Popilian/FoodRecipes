@@ -19,7 +19,6 @@ class IngredientsListViewController: UIViewController {
     
     mainView = IngredientsListView(delegate: self)
     view = mainView
-    view.backgroundColor = .systemYellow
   }
 }
 

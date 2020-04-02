@@ -96,7 +96,6 @@ private extension FilterRecipeView {
     searchRecipesButton.setTitle("Search recipes", for: .normal)
     searchRecipesButton.layer.cornerRadius = 18
     searchRecipesButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-    searchRecipesButton.backgroundColor = .systemGreen
     searchRecipesButton.isEnabled = false
   }
   
