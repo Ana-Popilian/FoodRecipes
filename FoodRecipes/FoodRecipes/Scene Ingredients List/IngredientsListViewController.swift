@@ -11,14 +11,30 @@ import UIKit
 class IngredientsListViewController: UIViewController {
   
   private var mainView: IngredientsListView!
+  private var modelData: Recipe!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
+  required init(withModel model: Recipe) {
+    super.init(nibName: nil, bundle: nil)
+    modelData = model
+  }
+  
+  //swiftlint:disable unavailable_function
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func loadView() {
     navigationItem.title = "Ingredients list"
     
     mainView = IngredientsListView(delegate: self)
     view = mainView
+  }
+  
+  override func viewDidLoad() {
+    
+    mainView.updateIngredientsData(modelData.ingredientLines)
+    mainView.updateImageView(modelData.image)
+    mainView.updateTitleLabel(modelData.label)
   }
 }
 

@@ -9,15 +9,16 @@
 import UIKit
 
 protocol IngredientsListDelegate where Self: UIViewController {
-  
 }
 
 final class IngredientsListView: UIView, UIScrollViewDelegate {
   
   private weak var delegate: IngredientsListDelegate?
+  private var ingredientsData = [String]()
+  private var recipeTitle = String()
+  private var imageData: URL!
   private var scrollView: UIScrollView!
   private var containerView: UIView!
-  private var containerImageView: UIView!
   private var recipeImageView: UIImageView!
   private var tableViewHeaderView: UIView!
   private var recipeTitleLabel: UILabel!
@@ -27,7 +28,9 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   
   private enum VT {
     static let imgViewHeightConstant: CGFloat = 120
+    static let imageMultiplier: CGFloat = 0.8
     static let tableViewHeightConstant: CGFloat = 500
+    static let tableViewHeaderHeight: CGFloat = 90
     static let searchButtonHeight: CGFloat = 45
   }
   
@@ -38,7 +41,6 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
     
     setupScrollView()
     setupContainerView()
-    setupContainerImageView()
     setupRecipeImageView()
     setuptableViewHeaderView()
     setupRecipeTitleLabel()
@@ -54,8 +56,24 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
+  func updateIngredientsData(_ ingredients: [String]) {
+    ingredientsData = ingredients
+    ingredientsTableView.reloadData()
+  }
+  
+  func updateImageView(_ image: URL) {
+    imageData = image
+    let imageUrl = image
+    recipeImageView.downloadImage(from: imageUrl, downloadFinishedHandler: {
+    })
+  }
+  
+  func updateTitleLabel(_ title: String) {
+    recipeTitle = title
+    recipeTitleLabel.text = recipeTitle
+  }
 }
-
 
 // MARK: - Private Zone
 private extension IngredientsListView {
@@ -70,22 +88,16 @@ private extension IngredientsListView {
     containerView = UIView()
   }
   
-  func setupContainerImageView() {
-    containerImageView = UIView()
-    containerImageView.backgroundColor = .systemGray4
-    containerImageView.clipsToBounds = true
-    containerImageView.layer.cornerRadius = VT.imgViewHeightConstant / 2
-  }
-  
   func setupRecipeImageView() {
     recipeImageView = UIImageView()
-    recipeImageView.image = ImageHelper.defaultPlaceholder
     recipeImageView.contentMode = .scaleAspectFit
+    recipeImageView.clipsToBounds = true
+    recipeImageView.layer.cornerRadius = VT.imgViewHeightConstant / 4
   }
   
   func setuptableViewHeaderView() {
     tableViewHeaderView = UIView()
-    tableViewHeaderView.backgroundColor = .systemGreen
+    //    tableViewHeaderView.backgroundColor = .systemGreen
   }
   
   func setupRecipeTitleLabel() {
@@ -128,26 +140,18 @@ private extension IngredientsListView {
 extension IngredientsListView: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 20
+    return ingredientsData.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //swiftlint:disable force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: IngredientsTableViewCell.identifier, for: indexPath) as! IngredientsTableViewCell
-    //    let data = recipeData?.hits[indexPath.row]
-    //    cell.bindCell(data!)
+    let ingredient = ingredientsData[indexPath.row]
+    cell.bindCell(ingredient)
     
     return cell
   }
 }
-
-
-//extension IngredientsListView: UITableViewDelegate {
-//
-//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//
-//  }
-//}
 
 
 // MARK: - Constraints Zone
@@ -156,12 +160,11 @@ private extension IngredientsListView {
   func addSubViews() {
     addSubviewWithoutConstr(scrollView)
     scrollView.addSubviewWithoutConstr(containerView)
-    containerView.addSubviewWithoutConstr(containerImageView)
     
     containerView.addSubviewWithoutConstr(ingredientsTableView)
     containerView.addSubviewWithoutConstr(seeDirectionsButton)
     
-    containerImageView.addSubviewWithoutConstr(recipeImageView)
+    containerView.addSubviewWithoutConstr(recipeImageView)
     
     ingredientsTableView.addSubviewWithoutConstr(tableViewHeaderView)
     tableViewHeaderView.addSubviewWithoutConstr(recipeTitleLabel)
@@ -184,32 +187,26 @@ private extension IngredientsListView {
       containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
       containerView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor),
       
-      containerImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-      containerImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      containerImageView.heightAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
-      containerImageView.widthAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
-      
-      recipeImageView.centerXAnchor.constraint(equalTo: containerImageView.centerXAnchor),
-      recipeImageView.centerYAnchor.constraint(equalTo: containerImageView.centerYAnchor),
-      recipeImageView.heightAnchor.constraint(equalTo: containerImageView.heightAnchor, multiplier: 0.8),
-      recipeImageView.widthAnchor.constraint(equalTo: containerImageView.heightAnchor, multiplier: 0.8),
+      recipeImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+      recipeImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      recipeImageView.heightAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
+      recipeImageView.widthAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
       
       ingredientsTableView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: VT.imgViewHeightConstant),
       ingredientsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
       ingredientsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
       ingredientsTableView.heightAnchor.constraint(equalToConstant: VT.tableViewHeightConstant),
       
-      //      tableViewHeaderView.topAnchor.constraint(equalTo: ingredientsTableView.topAnchor),
       tableViewHeaderView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
       tableViewHeaderView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      tableViewHeaderView.heightAnchor.constraint(equalToConstant: 80),
+      tableViewHeaderView.heightAnchor.constraint(equalToConstant: VT.tableViewHeaderHeight),
       
-      recipeTitleLabel.topAnchor.constraint(equalTo: tableViewHeaderView.topAnchor, constant: 10),
+      recipeTitleLabel.topAnchor.constraint(equalTo: tableViewHeaderView.topAnchor, constant: 15),
       recipeTitleLabel.leadingAnchor.constraint(equalTo: tableViewHeaderView.leadingAnchor),
       recipeTitleLabel.trailingAnchor.constraint(equalTo: tableViewHeaderView.trailingAnchor),
       
       ingredientsTitleLabel.topAnchor.constraint(equalTo: recipeTitleLabel.bottomAnchor, constant: 10),
-      ingredientsTitleLabel.leadingAnchor.constraint(equalTo: tableViewHeaderView.leadingAnchor, constant: 10),
+      ingredientsTitleLabel.leadingAnchor.constraint(equalTo: tableViewHeaderView.leadingAnchor, constant: 15),
       ingredientsTitleLabel.trailingAnchor.constraint(equalTo: tableViewHeaderView.trailingAnchor),
       ingredientsTitleLabel.bottomAnchor.constraint(equalTo: tableViewHeaderView.bottomAnchor, constant: -10),
       
@@ -218,7 +215,6 @@ private extension IngredientsListView {
       seeDirectionsButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -35),
       seeDirectionsButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),
       seeDirectionsButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
-      
     ])
   }
 }

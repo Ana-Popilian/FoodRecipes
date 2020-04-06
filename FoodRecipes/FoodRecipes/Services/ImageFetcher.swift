@@ -18,7 +18,7 @@ final class ImageFetcher: NSObject {
       
       let session = URLSession(configuration: sessionConfig)
       
-      let task = session.dataTask(with: request, completionHandler: { data,_,_ in
+      let task = session.dataTask(with: request, completionHandler: { data, _, _ in
         completion(data)
       })
       task.resume()

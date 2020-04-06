@@ -17,8 +17,6 @@ class RecipesListViewController: UIViewController {
   required init(withModel model: RecipeModel) {
     super.init(nibName: nil, bundle: nil)
     modelData = model
-    
-    print(model)
   }
   
   //swiftlint:disable unavailable_function
@@ -37,4 +35,8 @@ class RecipesListViewController: UIViewController {
 }
 
 extension RecipesListViewController: RecipesListDelegate {
+  func pushViewController(model: Hit) {
+    let nextViewController = IngredientsListViewController(withModel: model.recipe)
+    navigationController?.pushViewController(nextViewController, animated: true)
+  }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RecipesListDelegate: UIViewController {
-
+  func pushViewController(model: Hit)
 }
 
 final class RecipesListView: UIView {
@@ -74,7 +74,9 @@ extension RecipesListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension RecipesListView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //implement later
+    let data = recipeData.hits[indexPath.row]
+    
+    delegate?.pushViewController(model: data)
   }
 }
 

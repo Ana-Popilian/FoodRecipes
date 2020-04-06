@@ -10,7 +10,6 @@ import Foundation
 
 
 struct RecipeModel: Codable {
-  let count: Int
   let hits: [Hit]
 }
 
@@ -22,10 +21,6 @@ struct Recipe: Codable {
   let label: String
   let image: URL
   let url: String
-  let ingredients: [Ingredient]
+  let ingredientLines: [String]
   let calories: Double
-}
-
-struct Ingredient: Codable {
-  let text: String
 }
