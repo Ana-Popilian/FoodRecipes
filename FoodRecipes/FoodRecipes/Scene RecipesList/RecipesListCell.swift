@@ -68,6 +68,7 @@ private extension RecipesListCell {
   
   func setupRecipeNameLabel() {
     recipeNameLabel = getDefaultLabel()
+    recipeNameLabel.numberOfLines = 2
     recipeNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
   }
   

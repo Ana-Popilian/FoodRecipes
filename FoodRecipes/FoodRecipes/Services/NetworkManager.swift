@@ -34,7 +34,6 @@ final class NetworkManager: NSObject {
         let response = try decoder.decode(RecipeModel.self, from: data!)
         
         completionHandler(response)
-        print(response)
         
       } catch let DecodingError.dataCorrupted(context) {
         print(context)

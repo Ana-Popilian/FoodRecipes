@@ -37,9 +37,9 @@ final class IngredientsTableViewCell: UITableViewCell, Identifiable {
 private extension IngredientsTableViewCell {
   func setupIngredintLabel() {
     ingredientLabel = UILabel()
-    ingredientLabel.font = UIFont.systemFont(ofSize: 15)
+    ingredientLabel.font = UIFont.systemFont(ofSize: 16)
     ingredientLabel.textAlignment = .natural
-    ingredientLabel.text = "+  1/4 cup of water"
+    ingredientLabel.numberOfLines = 2
   }
 }
 
