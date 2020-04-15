@@ -15,7 +15,7 @@ final class RecipesListCell: UITableViewCell, Identifiable {
   private var recipeNameLabel: UILabel!
   private var caloriesValueLabel: UILabel!
   
-  private enum ViewTrait {
+  private enum VT {
     static let defaultHorizontalSpacing: CGFloat = 15
     static let titleTopPaddind: CGFloat = 35
     static let imageViewHorizontalSpacing: CGFloat = 20
@@ -97,23 +97,23 @@ private extension RecipesListCell {
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      recipeContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ViewTrait.defaultHorizontalSpacing),
-      recipeContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ViewTrait.defaultHorizontalSpacing),
+      recipeContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.defaultHorizontalSpacing),
+      recipeContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.defaultHorizontalSpacing),
       recipeContainerView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
       recipeContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
       
-      recipeImageView.leadingAnchor.constraint(equalTo: recipeContainerView.leadingAnchor, constant: ViewTrait.imageViewHorizontalSpacing),
+      recipeImageView.leadingAnchor.constraint(equalTo: recipeContainerView.leadingAnchor, constant: VT.imageViewHorizontalSpacing),
       recipeImageView.centerYAnchor.constraint(equalTo: recipeContainerView.centerYAnchor),
       recipeImageView.heightAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),
       recipeImageView.widthAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),
       
-      recipeNameLabel.topAnchor.constraint(equalTo: recipeContainerView.topAnchor, constant: ViewTrait.titleTopPaddind),
-      recipeNameLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: ViewTrait.defaultHorizontalSpacing),
-      recipeNameLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -ViewTrait.defaultHorizontalSpacing),
+      recipeNameLabel.topAnchor.constraint(equalTo: recipeContainerView.topAnchor, constant: VT.titleTopPaddind),
+      recipeNameLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: VT.defaultHorizontalSpacing),
+      recipeNameLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -VT.defaultHorizontalSpacing),
       
       caloriesValueLabel.topAnchor.constraint(equalTo: recipeNameLabel.bottomAnchor, constant: 5),
-      caloriesValueLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: ViewTrait.defaultHorizontalSpacing),
-      caloriesValueLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -ViewTrait.defaultHorizontalSpacing)
+      caloriesValueLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: VT.defaultHorizontalSpacing),
+      caloriesValueLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -VT.defaultHorizontalSpacing)
     ])
   }
 }

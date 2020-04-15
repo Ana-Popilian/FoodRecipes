@@ -9,6 +9,7 @@
 import UIKit
 
 protocol IngredientsListDelegate where Self: UIViewController {
+  func didPressDirectionsButton()
 }
 
 final class IngredientsListView: UIView, UIScrollViewDelegate {
@@ -37,7 +38,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   required init(delegate: IngredientsListDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = .systemYellow
+    backgroundColor = .systemPurple
     
     setupContainerView()
     setupRecipeImageView()
@@ -91,6 +92,7 @@ private extension IngredientsListView {
     recipeTitleLabel = UILabel()
     recipeTitleLabel.numberOfLines = 2
     recipeTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    recipeTitleLabel.textColor = .white
     recipeTitleLabel.textAlignment = .center
   }
   
@@ -98,6 +100,7 @@ private extension IngredientsListView {
     ingredientsTitleLabel = UILabel()
     ingredientsTitleLabel.text = "Ingredients:"
     ingredientsTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    ingredientsTitleLabel.textColor = .white
     ingredientsTitleLabel.textAlignment = .left
   }
   
@@ -116,7 +119,7 @@ private extension IngredientsListView {
   }
   
   @objc func buttonPressed() {
-    
+    delegate?.didPressDirectionsButton()
   }
 }
 
@@ -143,7 +146,7 @@ private extension IngredientsListView {
   
   func addSubViews() {
     
-   addSubviewWithoutConstr(containerView)
+    addSubviewWithoutConstr(containerView)
     
     containerView.addSubviewWithoutConstr(recipeImageView)
     containerView.addSubviewWithoutConstr(recipeTitleLabel)
@@ -153,7 +156,7 @@ private extension IngredientsListView {
   }
   
   func setupConstraints() {
-   
+    
     NSLayoutConstraint.activate([
       
       containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -174,12 +177,12 @@ private extension IngredientsListView {
       ingredientsTitleLabel.topAnchor.constraint(equalTo: recipeTitleLabel.bottomAnchor, constant: VT.defaulHeightConst),
       ingredientsTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: VT.ingrHPadding),
       ingredientsTitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-
+      
       ingredientsTableView.topAnchor.constraint(equalTo: ingredientsTitleLabel.bottomAnchor, constant: VT.defaulHeightConst),
       ingredientsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
       ingredientsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
       ingredientsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: VT.tableViewBottomPadding),
-   
+      
       seeDirectionsButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: VT.buttonHPadding),
       seeDirectionsButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -VT.buttonHPadding),
       seeDirectionsButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),

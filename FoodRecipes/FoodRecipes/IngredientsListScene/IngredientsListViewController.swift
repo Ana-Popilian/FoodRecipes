@@ -40,4 +40,9 @@ class IngredientsListViewController: UIViewController {
 
 extension IngredientsListViewController: IngredientsListDelegate {
   
+  func didPressDirectionsButton() {
+    let url = modelData.url
+    let nextViewController = RecipeDirectionsViewController(withUrl: url)
+    navigationController?.pushViewController(nextViewController, animated: true)
+  }
 }

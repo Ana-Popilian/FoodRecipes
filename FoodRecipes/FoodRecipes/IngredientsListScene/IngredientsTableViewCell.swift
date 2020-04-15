@@ -13,6 +13,11 @@ final class IngredientsTableViewCell: UITableViewCell, Identifiable {
   
   private var ingredientLabel: UILabel!
   
+  private enum VT {
+    static let defaultPadding: CGFloat = 5
+    static let horizontalPadding: CGFloat = 15
+  }
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
@@ -21,14 +26,13 @@ final class IngredientsTableViewCell: UITableViewCell, Identifiable {
     setupConstraints()
   }
   
-   @available(*, unavailable)
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   func bindCell(_ ingredient: String) {
     ingredientLabel.text  = "+ \(ingredient)"
-//    "+ \(String(describing: ingredient))"
   }
 }
 
@@ -53,10 +57,10 @@ private extension IngredientsTableViewCell {
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      ingredientLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-      ingredientLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-      ingredientLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      ingredientLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+      ingredientLabel.topAnchor.constraint(equalTo: topAnchor, constant: VT.defaultPadding),
+      ingredientLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.horizontalPadding),
+      ingredientLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.defaultPadding),
+      ingredientLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.defaultPadding)
     ])
   }
 }
