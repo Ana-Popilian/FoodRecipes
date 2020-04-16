@@ -15,7 +15,7 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .systemRed
+    backgroundColor = ColorHelper.customRed
     layer.cornerRadius = 40
     
     setupFilterNamaLabel()

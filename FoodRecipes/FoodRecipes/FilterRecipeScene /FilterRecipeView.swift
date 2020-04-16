@@ -32,13 +32,15 @@ final class FilterRecipeView: UIView {
   private enum VT {
     static let topContraint: CGFloat = 15
     static let dietCollMult: CGFloat = 0.23
-    static let searchButtonHeight: CGFloat = 45
+    static let searchButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.13
+    static let buttomBotHeight: CGFloat = UIScreen.main.bounds.height / 40.5
     static let searchButtonLead: CGFloat = 35
   }
   
   required init(delegate: FilterRecipeDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
+    backgroundColor = ColorHelper.customYellow
     
     setupSearchBar()
     setupDietaryHeaderLabel()
@@ -94,7 +96,7 @@ private extension FilterRecipeView {
   func setupSearchRecipesButton() {
     searchRecipesButton = CustomButton()
     searchRecipesButton.setTitle("Search recipes", for: .normal)
-    searchRecipesButton.layer.cornerRadius = 18
+    searchRecipesButton.layer.cornerRadius = 15
     searchRecipesButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     searchRecipesButton.isEnabled = false
   }
@@ -102,8 +104,8 @@ private extension FilterRecipeView {
   func getDefaultLabel() -> UILabel {
     let label = UILabel()
     label.textAlignment = .center
-    label.textColor = .systemOrange
-    label.font = UIFont.boldSystemFont(ofSize: 16)
+    label.textColor = ColorHelper.customPurple
+    label.font = UIFont.systemFont(ofSize: 16)
     return label
   }
   
@@ -113,7 +115,7 @@ private extension FilterRecipeView {
     collectionView.delegate = self
     collectionView.isScrollEnabled = false
     collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
-    collectionView.backgroundColor = .systemYellow
+    collectionView.backgroundColor = ColorHelper.customYellow
     return collectionView
   }
   
@@ -139,6 +141,10 @@ extension FilterRecipeView: UISearchBarDelegate {
     }
     return true
   }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+      searchBar.endEditing(true)
+  }
 }
 
 
@@ -153,7 +159,6 @@ extension FilterRecipeView: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
     if collectionView == dietFilterCollectionView {
       //swiftlint:disable force_cast
       let cellA = dietFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
@@ -178,14 +183,14 @@ extension FilterRecipeView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if collectionView == dietFilterCollectionView {
       let cell = collectionView.cellForItem(at: indexPath)
-      cell?.backgroundColor = UIColor.purple
+      cell?.backgroundColor = ColorHelper.customPurple
       
       let diet = dietaryFilters[indexPath.item]
       selectedDietParameter = diet
       
     } else {
       let cell = collectionView.cellForItem(at: indexPath)
-      cell?.backgroundColor = UIColor.purple
+      cell?.backgroundColor = ColorHelper.customPurple
       
       let health = healthFilters[indexPath.item]
       selectedHealthParameters.append(health)
@@ -199,7 +204,7 @@ extension FilterRecipeView: UICollectionViewDelegate {
       selectedHealthParameters.remove(at: index)
     }
     let cell = collectionView.cellForItem(at: indexPath as IndexPath)
-    cell?.backgroundColor = UIColor.red
+    cell?.backgroundColor = ColorHelper.customRed
   }
 }
 
@@ -243,7 +248,7 @@ private extension FilterRecipeView {
       searchRecipesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.searchButtonLead),
       searchRecipesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.searchButtonLead),
       searchRecipesButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),
-      searchRecipesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.searchButtonHeight)
+      searchRecipesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.buttomBotHeight)
     ])
   }
 }

@@ -42,8 +42,9 @@ private extension IngredientsTableViewCell {
   func setupIngredintLabel() {
     ingredientLabel = UILabel()
     ingredientLabel.font = UIFont.systemFont(ofSize: 16)
+    ingredientLabel.textColor = ColorHelper.customPurple
     ingredientLabel.textAlignment = .natural
-    ingredientLabel.numberOfLines = 2
+    ingredientLabel.numberOfLines = 3
   }
 }
 

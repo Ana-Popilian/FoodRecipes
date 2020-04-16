@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let ingredients = ["apa", "faina", "otet", "sare", "sare", "ulei", "branza", "hartie de copt", "soia", "cartofi", "varza", "drojdie", "morcov"]
 //    let url = URL(string: "https://www.edamam.com/web-img/fb1/fb1488726ffa0997d8855da3180a4c53.jpg")!
 //    let recipe = Recipe(label: "Placinta", image: url, url: "http://www.bbcgoodfood.com/recipes/5799/", ingredientLines: ingredients, calories: 23)
+  
     let viewController = FilterRecipeViewController()
     let navigation = UINavigationController(rootViewController: viewController)
     window?.rootViewController = navigation

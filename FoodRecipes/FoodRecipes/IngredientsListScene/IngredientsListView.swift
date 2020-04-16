@@ -23,6 +23,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   private var recipeTitleLabel: UILabel!
   private var ingredientsTitleLabel: UILabel!
   private var ingredientsTableView: UITableView!
+  private var buttonContainerView: UIView!
   private var seeDirectionsButton: UIButton!
   
   private enum VT {
@@ -38,13 +39,13 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   required init(delegate: IngredientsListDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = .systemPurple
+    backgroundColor = ColorHelper.customPurple
     
-    setupContainerView()
     setupRecipeImageView()
     setupRecipeTitleLabel()
     setupIngredinetsListLabel()
     setupIngredientsTableView()
+    setupButtonContainerView()
     setupSeeDirectionsButton()
     
     addSubViews()
@@ -77,10 +78,6 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
 // MARK: - Private Zone
 private extension IngredientsListView {
   
-  func setupContainerView() {
-    containerView = UIView()
-  }
-  
   func setupRecipeImageView() {
     recipeImageView = UIImageView()
     recipeImageView.contentMode = .scaleAspectFit
@@ -90,7 +87,7 @@ private extension IngredientsListView {
   
   func setupRecipeTitleLabel() {
     recipeTitleLabel = UILabel()
-    recipeTitleLabel.numberOfLines = 2
+    recipeTitleLabel.numberOfLines = 3
     recipeTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
     recipeTitleLabel.textColor = .white
     recipeTitleLabel.textAlignment = .center
@@ -110,10 +107,15 @@ private extension IngredientsListView {
     ingredientsTableView.register(IngredientsTableViewCell.self, forCellReuseIdentifier: IngredientsTableViewCell.identifier)
   }
   
+  func setupButtonContainerView() {
+    buttonContainerView = UIView()
+    buttonContainerView.backgroundColor = .white
+  }
+  
   func setupSeeDirectionsButton() {
     seeDirectionsButton = CustomButton()
     seeDirectionsButton.setTitle("See Directions", for: .normal)
-    seeDirectionsButton.layer.cornerRadius = 18
+    seeDirectionsButton.layer.cornerRadius = 15
     seeDirectionsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     seeDirectionsButton.isEnabled = true
   }
@@ -146,45 +148,43 @@ private extension IngredientsListView {
   
   func addSubViews() {
     
-    addSubviewWithoutConstr(containerView)
-    
-    containerView.addSubviewWithoutConstr(recipeImageView)
-    containerView.addSubviewWithoutConstr(recipeTitleLabel)
-    containerView.addSubviewWithoutConstr(ingredientsTitleLabel)
-    containerView.addSubviewWithoutConstr(ingredientsTableView)
-    containerView.addSubviewWithoutConstr(seeDirectionsButton)
+    addSubviewWithoutConstr(recipeImageView)
+    addSubviewWithoutConstr(recipeTitleLabel)
+    addSubviewWithoutConstr(ingredientsTitleLabel)
+    addSubviewWithoutConstr(ingredientsTableView)
+    addSubviewWithoutConstr(buttonContainerView)
+    buttonContainerView.addSubviewWithoutConstr(seeDirectionsButton)
   }
   
   func setupConstraints() {
     
     NSLayoutConstraint.activate([
       
-      containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-      containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-      containerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-      containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-      containerView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor),
-      
       recipeImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: VT.defaulHeightConst),
-      recipeImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+      recipeImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
       recipeImageView.heightAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
       recipeImageView.widthAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
       
       recipeTitleLabel.topAnchor.constraint(equalTo: recipeImageView.bottomAnchor, constant: VT.defaulHeightConst),
-      recipeTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      recipeTitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+      recipeTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+      recipeTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       
       ingredientsTitleLabel.topAnchor.constraint(equalTo: recipeTitleLabel.bottomAnchor, constant: VT.defaulHeightConst),
-      ingredientsTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: VT.ingrHPadding),
-      ingredientsTitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+      ingredientsTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: VT.ingrHPadding),
+      ingredientsTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       
       ingredientsTableView.topAnchor.constraint(equalTo: ingredientsTitleLabel.bottomAnchor, constant: VT.defaulHeightConst),
-      ingredientsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      ingredientsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      ingredientsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: VT.tableViewBottomPadding),
+      ingredientsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+      ingredientsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+      ingredientsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: VT.tableViewBottomPadding),
       
-      seeDirectionsButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: VT.buttonHPadding),
-      seeDirectionsButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -VT.buttonHPadding),
+      buttonContainerView.topAnchor.constraint(equalTo: ingredientsTableView.bottomAnchor),
+      buttonContainerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+      buttonContainerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+      buttonContainerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+      
+      seeDirectionsButton.leadingAnchor.constraint(equalTo: buttonContainerView.leadingAnchor, constant: VT.buttonHPadding),
+      seeDirectionsButton.trailingAnchor.constraint(equalTo: buttonContainerView.trailingAnchor, constant: -VT.buttonHPadding),
       seeDirectionsButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),
       seeDirectionsButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -VT.defaulHeightConst)
     ])

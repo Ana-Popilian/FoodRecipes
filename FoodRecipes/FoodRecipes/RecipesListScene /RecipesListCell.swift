@@ -11,13 +11,16 @@ import UIKit
 final class RecipesListCell: UITableViewCell, Identifiable {
   
   private var recipeContainerView: UIView!
+  private var labelsContainerView: UIView!
   private var recipeImageView: UIImageView!
   private var recipeNameLabel: UILabel!
   private var caloriesValueLabel: UILabel!
   
   private enum VT {
+    static let containerMult: CGFloat = 0.8
+    static let imageMult: CGFloat = 0.7
     static let defaultHorizontalSpacing: CGFloat = 15
-    static let titleTopPaddind: CGFloat = 35
+    static let calorieHPadding: CGFloat = 5
     static let imageViewHorizontalSpacing: CGFloat = 20
   }
   
@@ -25,6 +28,7 @@ final class RecipesListCell: UITableViewCell, Identifiable {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     setupRecipeContainerView()
+    setupLabelsContainerView()
     setupRecipeImageView()
     setupRecipeNameLabel()
     setupCaloriesValueLabel()
@@ -56,7 +60,7 @@ private extension RecipesListCell {
   func setupRecipeContainerView() {
     recipeContainerView = UIView()
     recipeContainerView.layer.cornerRadius = 30
-    recipeContainerView.backgroundColor = .systemYellow
+    recipeContainerView.backgroundColor = ColorHelper.customPeach
   }
   
   func setupRecipeImageView() {
@@ -66,9 +70,13 @@ private extension RecipesListCell {
     recipeImageView.contentMode = .scaleAspectFit
   }
   
+  func setupLabelsContainerView() {
+    labelsContainerView = UIView()
+  }
+  
   func setupRecipeNameLabel() {
     recipeNameLabel = getDefaultLabel()
-    recipeNameLabel.numberOfLines = 2
+    recipeNameLabel.numberOfLines = 3
     recipeNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
   }
   
@@ -79,7 +87,7 @@ private extension RecipesListCell {
   
   func getDefaultLabel() -> UILabel {
     let label = UILabel()
-    label.textColor = .black
+    label.textColor = .white
     return label
   }
 }
@@ -91,29 +99,35 @@ private extension RecipesListCell {
   func addSubViews() {
     addSubviewWithoutConstr(recipeContainerView)
     recipeContainerView.addSubviewWithoutConstr(recipeImageView)
-    recipeContainerView.addSubviewWithoutConstr(recipeNameLabel)
-    recipeContainerView.addSubviewWithoutConstr(caloriesValueLabel)
+    recipeContainerView.addSubviewWithoutConstr(labelsContainerView)
+    labelsContainerView.addSubviewWithoutConstr(recipeNameLabel)
+    labelsContainerView.addSubviewWithoutConstr(caloriesValueLabel)
   }
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
       recipeContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.defaultHorizontalSpacing),
       recipeContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.defaultHorizontalSpacing),
-      recipeContainerView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
-      recipeContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+      recipeContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: VT.containerMult),
+      recipeContainerView.centerYAnchor.constraint(equalTo: centerYAnchor),
       
       recipeImageView.leadingAnchor.constraint(equalTo: recipeContainerView.leadingAnchor, constant: VT.imageViewHorizontalSpacing),
       recipeImageView.centerYAnchor.constraint(equalTo: recipeContainerView.centerYAnchor),
-      recipeImageView.heightAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),
-      recipeImageView.widthAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: 0.7),
+      recipeImageView.heightAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: VT.imageMult),
+      recipeImageView.widthAnchor.constraint(equalTo: recipeContainerView.heightAnchor, multiplier: VT.imageMult),
       
-      recipeNameLabel.topAnchor.constraint(equalTo: recipeContainerView.topAnchor, constant: VT.titleTopPaddind),
-      recipeNameLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: VT.defaultHorizontalSpacing),
-      recipeNameLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -VT.defaultHorizontalSpacing),
+      labelsContainerView.centerYAnchor.constraint(equalTo: recipeContainerView.centerYAnchor),
+      labelsContainerView.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: VT.defaultHorizontalSpacing),
+      labelsContainerView.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -VT.defaultHorizontalSpacing),
       
-      caloriesValueLabel.topAnchor.constraint(equalTo: recipeNameLabel.bottomAnchor, constant: 5),
-      caloriesValueLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: VT.defaultHorizontalSpacing),
-      caloriesValueLabel.trailingAnchor.constraint(equalTo: recipeContainerView.trailingAnchor, constant: -VT.defaultHorizontalSpacing)
+      recipeNameLabel.topAnchor.constraint(equalTo: labelsContainerView.topAnchor),
+      recipeNameLabel.leadingAnchor.constraint(equalTo: labelsContainerView.leadingAnchor),
+      recipeNameLabel.trailingAnchor.constraint(equalTo: labelsContainerView.trailingAnchor),
+      
+      caloriesValueLabel.topAnchor.constraint(equalTo: recipeNameLabel.bottomAnchor, constant: VT.calorieHPadding),
+      caloriesValueLabel.leadingAnchor.constraint(equalTo: labelsContainerView.leadingAnchor),
+      caloriesValueLabel.trailingAnchor.constraint(equalTo: labelsContainerView.trailingAnchor),
+      caloriesValueLabel.bottomAnchor.constraint(equalTo: labelsContainerView.bottomAnchor)
     ])
   }
 }
