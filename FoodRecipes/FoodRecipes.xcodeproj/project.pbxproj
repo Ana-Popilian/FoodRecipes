@@ -20,10 +20,10 @@
 		A162826D2421233F00F7AF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */; };
 		A16282752421252800F7AF1D /* RecipesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16282742421252800F7AF1D /* RecipesListView.swift */; };
 		A16282762421255600F7AF1D /* RecipesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16282642421233900F7AF1D /* RecipesListViewController.swift */; };
+		A1697FEC244DDF8D001FB191 /* FIlterRecipeViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E62432345D00BE4FE7 /* FIlterRecipeViewExtensions.swift */; };
 		A17E41E124321C4F00BE4FE7 /* UIImageViewDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E024321C4F00BE4FE7 /* UIImageViewDownload.swift */; };
 		A17E41E324321DB800BE4FE7 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E224321DB800BE4FE7 /* ImageFetcher.swift */; };
 		A17E41E52432245E00BE4FE7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E42432245E00BE4FE7 /* ImageHelper.swift */; };
-		A17E41E72432345D00BE4FE7 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E62432345D00BE4FE7 /* CollectionViewLayout.swift */; };
 		A17E41EA2432397900BE4FE7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41E92432397900BE4FE7 /* CustomButton.swift */; };
 		A17E41EC24324FE200BE4FE7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E41EB24324FE200BE4FE7 /* StringExtension.swift */; };
 		A1EE902D242236BD00BA4EB9 /* FilterRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE902C242236BD00BA4EB9 /* FilterRecipeView.swift */; };
@@ -55,7 +55,7 @@
 		A17E41E024321C4F00BE4FE7 /* UIImageViewDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewDownload.swift; sourceTree = "<group>"; };
 		A17E41E224321DB800BE4FE7 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		A17E41E42432245E00BE4FE7 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
-		A17E41E62432345D00BE4FE7 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		A17E41E62432345D00BE4FE7 /* FIlterRecipeViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIlterRecipeViewExtensions.swift; sourceTree = "<group>"; };
 		A17E41E92432397900BE4FE7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A17E41EB24324FE200BE4FE7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A1EE902C242236BD00BA4EB9 /* FilterRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRecipeView.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				A1EE902C242236BD00BA4EB9 /* FilterRecipeView.swift */,
 				A16133902423848B004344A5 /* FilterCollectionViewCell.swift */,
 				A128E4A8242D0DBB00C7E19A /* RecipeData.swift */,
-				A17E41E62432345D00BE4FE7 /* CollectionViewLayout.swift */,
+				A17E41E62432345D00BE4FE7 /* FIlterRecipeViewExtensions.swift */,
 			);
 			path = "FilterRecipeScene ";
 			sourceTree = "<group>";
@@ -295,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1697FEC244DDF8D001FB191 /* FIlterRecipeViewExtensions.swift in Sources */,
 				A10E22FC242A4CA3002E65E5 /* NetworkManager.swift in Sources */,
 				A16282762421255600F7AF1D /* RecipesListViewController.swift in Sources */,
 				A12BAA502447493000234B1E /* RecipeDirectionsView.swift in Sources */,
@@ -308,7 +309,6 @@
 				A1EE902F242236F300BA4EB9 /* FilterRecipeViewController.swift in Sources */,
 				A1EE90372422493700BA4EB9 /* UIView+Additions.swift in Sources */,
 				A16282752421252800F7AF1D /* RecipesListView.swift in Sources */,
-				A17E41E72432345D00BE4FE7 /* CollectionViewLayout.swift in Sources */,
 				A128E4A9242D0DBB00C7E19A /* RecipeData.swift in Sources */,
 				A17E41E52432245E00BE4FE7 /* ImageHelper.swift in Sources */,
 				A17E41EA2432397900BE4FE7 /* CustomButton.swift in Sources */,

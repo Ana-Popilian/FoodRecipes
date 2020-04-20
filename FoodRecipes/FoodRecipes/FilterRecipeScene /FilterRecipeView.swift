@@ -16,7 +16,7 @@ final class FilterRecipeView: UIView {
   
   private weak var delegate: FilterRecipeDelegate?
   private var searchBar: UISearchBar!
-  private var dietaryHeaderLabel: UILabel!
+  private var dietaryLabel: UILabel!
   private var dietFilterCollectionView: UICollectionView!
   private var healthRestrictionLabel: UILabel!
   private var healthFilterCollectionView: UICollectionView!
@@ -33,17 +33,17 @@ final class FilterRecipeView: UIView {
     static let topContraint: CGFloat = 15
     static let dietCollMult: CGFloat = 0.23
     static let searchButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.13
-    static let buttomBotHeight: CGFloat = UIScreen.main.bounds.height / 40.5
+    static let buttonBottomHeight: CGFloat = UIScreen.main.bounds.height / 40.5
     static let searchButtonLead: CGFloat = 35
   }
   
   required init(delegate: FilterRecipeDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = ColorHelper.customYellow
+    backgroundColor = ColorHelper.customBlue
     
     setupSearchBar()
-    setupDietaryHeaderLabel()
+    setupDietaryLabel()
     setupDietFilterCollectionView()
     setupHealthRestrictionLabel()
     setupHealthFilterCollectionView()
@@ -74,9 +74,9 @@ private extension FilterRecipeView {
     searchBar.delegate = self
   }
   
-  func setupDietaryHeaderLabel() {
-    dietaryHeaderLabel = getDefaultLabel()
-    dietaryHeaderLabel.text = "Dietary Restrictions"
+  func setupDietaryLabel() {
+    dietaryLabel = getDefaultLabel()
+    dietaryLabel.text = "Dietary Restrictions"
   }
   
   func setupDietFilterCollectionView() {
@@ -115,7 +115,7 @@ private extension FilterRecipeView {
     collectionView.delegate = self
     collectionView.isScrollEnabled = false
     collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
-    collectionView.backgroundColor = ColorHelper.customYellow
+    collectionView.backgroundColor = ColorHelper.customBlue
     return collectionView
   }
   
@@ -133,17 +133,17 @@ extension FilterRecipeView: UISearchBarDelegate {
     let word = searchText
     typedIngredient = word
     searchRecipesButton.isEnabled = !word.isBlank
+    hideKeyboardWhenTappedAround()
   }
   
   func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    if text.contains(" ") || text.contains(".") {
-      return false
-    }
-    return true
+    
+    let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+    return regex.matches(text)
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-      searchBar.endEditing(true)
+    searchBar.endEditing(true)
   }
 }
 
@@ -214,7 +214,7 @@ private extension FilterRecipeView {
   
   func addSubViews() {
     addSubviewWithoutConstr(searchBar)
-    addSubviewWithoutConstr(dietaryHeaderLabel)
+    addSubviewWithoutConstr(dietaryLabel)
     addSubviewWithoutConstr(dietFilterCollectionView)
     addSubviewWithoutConstr(healthRestrictionLabel)
     addSubviewWithoutConstr(healthFilterCollectionView)
@@ -227,11 +227,11 @@ private extension FilterRecipeView {
       searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       
-      dietaryHeaderLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: VT.topContraint),
-      dietaryHeaderLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-      dietaryHeaderLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      dietaryLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: VT.topContraint),
+      dietaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+      dietaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
       
-      dietFilterCollectionView.topAnchor.constraint(equalTo: dietaryHeaderLabel.bottomAnchor),
+      dietFilterCollectionView.topAnchor.constraint(equalTo: dietaryLabel.bottomAnchor),
       dietFilterCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
       dietFilterCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
       dietFilterCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: VT.dietCollMult),
@@ -248,7 +248,7 @@ private extension FilterRecipeView {
       searchRecipesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.searchButtonLead),
       searchRecipesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.searchButtonLead),
       searchRecipesButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),
-      searchRecipesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.buttomBotHeight)
+      searchRecipesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.buttonBottomHeight)
     ])
   }
 }

@@ -16,7 +16,7 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
     super.init(frame: frame)
     
     backgroundColor = ColorHelper.customRed
-    layer.cornerRadius = 40
+    layer.cornerRadius = 30
     
     setupFilterNamaLabel()
     

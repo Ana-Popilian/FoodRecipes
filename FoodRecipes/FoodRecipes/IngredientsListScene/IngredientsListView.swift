@@ -39,7 +39,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   required init(delegate: IngredientsListDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = ColorHelper.customPurple
+    backgroundColor = ColorHelper.customBlue
     
     setupRecipeImageView()
     setupRecipeTitleLabel()

@@ -60,7 +60,7 @@ private extension RecipesListCell {
   func setupRecipeContainerView() {
     recipeContainerView = UIView()
     recipeContainerView.layer.cornerRadius = 30
-    recipeContainerView.backgroundColor = ColorHelper.customPeach
+    recipeContainerView.backgroundColor = ColorHelper.customBlue
   }
   
   func setupRecipeImageView() {
@@ -87,7 +87,7 @@ private extension RecipesListCell {
   
   func getDefaultLabel() -> UILabel {
     let label = UILabel()
-    label.textColor = .white
+    label.textColor = .black
     return label
   }
 }

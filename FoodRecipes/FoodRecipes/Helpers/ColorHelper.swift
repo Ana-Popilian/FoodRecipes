@@ -13,6 +13,6 @@ enum ColorHelper {
   static let customRed: UIColor = UIColor(named: "customRed")!
   static let customPurple: UIColor = UIColor(named: "customPurple")!
   static let customPink: UIColor = UIColor(named: "customPink")!
-  static let customOrange: UIColor = UIColor(named: "customOrange")!
+  static let customBlue: UIColor = UIColor(named: "customBlue")!
   static let customPeach: UIColor = UIColor(named: "customPeach")!
 }
