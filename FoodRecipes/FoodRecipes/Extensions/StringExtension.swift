@@ -13,17 +13,16 @@ extension String {
     return allSatisfy({ $0.isWhitespace })
   }
   
-  func trimTrailingPunctuation() -> String {
-    return self.trimmingCharacters(in: .whitespacesAndNewlines)
-      .trimmingCharacters(in: .punctuationCharacters)
-      .trimmingCharacters(in: .whitespacesAndNewlines)
-  }
+  //  func trimTrailingPunctuation() -> String {
+  //    return self.trimmingCharacters(in: .whitespacesAndNewlines)
+  //      .trimmingCharacters(in: .punctuationCharacters)
+  //      .trimmingCharacters(in: .whitespacesAndNewlines)
+  //  }
 }
 
-
 extension NSRegularExpression {
-    func matches(_ string: String) -> Bool {
-        let range = NSRange(location: 0, length: string.utf16.count)
-        return firstMatch(in: string, options: [], range: range) != nil
-    }
+  func matches(_ string: String) -> Bool {
+    let range = NSRange(location: 0, length: string.utf16.count)
+    return firstMatch(in: string, options: [], range: range) != nil
+  }
 }

@@ -34,7 +34,7 @@ final class FilterRecipeView: UIView {
     static let dietCollMult: CGFloat = 0.23
     static let searchButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.13
     static let buttonBottomHeight: CGFloat = UIScreen.main.bounds.height / 40.5
-    static let searchButtonLead: CGFloat = 35
+    static let searchButtonPadding: CGFloat = 35
   }
   
   required init(delegate: FilterRecipeDelegate?) {
@@ -101,14 +101,6 @@ private extension FilterRecipeView {
     searchRecipesButton.isEnabled = false
   }
   
-  func getDefaultLabel() -> UILabel {
-    let label = UILabel()
-    label.textAlignment = .center
-    label.textColor = ColorHelper.customPurple
-    label.font = UIFont.systemFont(ofSize: 16)
-    return label
-  }
-  
   func getDefaultCollectionView() -> UICollectionView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     collectionView.dataSource = self
@@ -137,13 +129,14 @@ extension FilterRecipeView: UISearchBarDelegate {
   }
   
   func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    
+    //swiftlint:disable force_try
     let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
     return regex.matches(text)
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.endEditing(true)
+    //    searchBar.endEditing(true)
+    searchBar.resignFirstResponder()
   }
 }
 
@@ -245,8 +238,8 @@ private extension FilterRecipeView {
       healthFilterCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
       
       searchRecipesButton.topAnchor.constraint(equalTo: healthFilterCollectionView.bottomAnchor, constant: VT.topContraint),
-      searchRecipesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.searchButtonLead),
-      searchRecipesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.searchButtonLead),
+      searchRecipesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VT.searchButtonPadding),
+      searchRecipesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VT.searchButtonPadding),
       searchRecipesButton.heightAnchor.constraint(equalToConstant: VT.searchButtonHeight),
       searchRecipesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -VT.buttonBottomHeight)
     ])

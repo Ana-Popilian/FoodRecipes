@@ -89,7 +89,7 @@ private extension IngredientsListView {
     recipeTitleLabel = UILabel()
     recipeTitleLabel.numberOfLines = 3
     recipeTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    recipeTitleLabel.textColor = .white
+    recipeTitleLabel.textColor = .black
     recipeTitleLabel.textAlignment = .center
   }
   
@@ -97,7 +97,7 @@ private extension IngredientsListView {
     ingredientsTitleLabel = UILabel()
     ingredientsTitleLabel.text = "Ingredients:"
     ingredientsTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    ingredientsTitleLabel.textColor = .white
+    ingredientsTitleLabel.textColor = .black
     ingredientsTitleLabel.textAlignment = .left
   }
   
