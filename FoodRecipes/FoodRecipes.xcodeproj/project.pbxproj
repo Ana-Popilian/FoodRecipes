@@ -79,6 +79,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A101A8DC2451D15600BB0942 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A16282692421233F00F7AF1D /* Assets.xcassets */,
+				A14E3B4824489842008629A4 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A101A8DD2451D19600BB0942 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		A10E22FA242A4C48002E65E5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,15 +137,15 @@
 				A1EE902B2422366700BA4EB9 /* RecipesListScene  */,
 				A1FA22C824336DF30022FAFD /* IngredientsListScene */,
 				A12BAA4E244748F800234B1E /* RecipeDirectionsScene */,
-				A16282602421233900F7AF1D /* AppDelegate.swift */,
 				A1EE90322422489C00BA4EB9 /* Protocols */,
 				A10E22FA242A4C48002E65E5 /* Services */,
+				A101A8DC2451D15600BB0942 /* Resources */,
 				A1EE90352422490900BA4EB9 /* Extensions */,
 				A17E41DD2432199600BE4FE7 /* Helpers */,
-				A16282692421233F00F7AF1D /* Assets.xcassets */,
-				A14E3B4824489842008629A4 /* Colors.xcassets */,
+				A101A8DD2451D19600BB0942 /* Infrastructure */,
 				A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */,
 				A162826E2421233F00F7AF1D /* Info.plist */,
+				A16282602421233900F7AF1D /* AppDelegate.swift */,
 			);
 			path = FoodRecipes;
 			sourceTree = "<group>";
