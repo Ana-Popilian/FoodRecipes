@@ -129,13 +129,15 @@ extension FilterRecipeView: UISearchBarDelegate {
   }
   
   func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if text == "\n" {
+      return true
+    }
     //swiftlint:disable force_try
     let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
     return regex.matches(text)
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //    searchBar.endEditing(true)
     searchBar.resignFirstResponder()
   }
 }
