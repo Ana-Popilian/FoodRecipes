@@ -97,11 +97,11 @@ private extension RecipesListCell {
 private extension RecipesListCell {
   
   func addSubViews() {
-    addSubviewWithoutConstr(recipeContainerView)
-    recipeContainerView.addSubviewWithoutConstr(recipeImageView)
-    recipeContainerView.addSubviewWithoutConstr(labelsContainerView)
-    labelsContainerView.addSubviewWithoutConstr(recipeNameLabel)
-    labelsContainerView.addSubviewWithoutConstr(caloriesValueLabel)
+    addSubviewWC(recipeContainerView)
+    recipeContainerView.addSubviewWC(recipeImageView)
+    recipeContainerView.addSubviewWC(labelsContainerView)
+    labelsContainerView.addSubviewWC(recipeNameLabel)
+    labelsContainerView.addSubviewWC(caloriesValueLabel)
   }
   
   func setupConstraints() {

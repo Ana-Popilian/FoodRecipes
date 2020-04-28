@@ -148,12 +148,12 @@ private extension IngredientsListView {
   
   func addSubViews() {
     
-    addSubviewWithoutConstr(recipeImageView)
-    addSubviewWithoutConstr(recipeTitleLabel)
-    addSubviewWithoutConstr(ingredientsTitleLabel)
-    addSubviewWithoutConstr(ingredientsTableView)
-    addSubviewWithoutConstr(buttonContainerView)
-    buttonContainerView.addSubviewWithoutConstr(seeDirectionsButton)
+    addSubviewWC(recipeImageView)
+    addSubviewWC(recipeTitleLabel)
+    addSubviewWC(ingredientsTitleLabel)
+    addSubviewWC(ingredientsTableView)
+    addSubviewWC(buttonContainerView)
+    buttonContainerView.addSubviewWC(seeDirectionsButton)
   }
   
   func setupConstraints() {

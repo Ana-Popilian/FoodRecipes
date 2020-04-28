@@ -27,9 +27,4 @@ extension UIImageView {
       }
     })
   }
-  
-  func addPlaceholder() {
-    self.contentMode = .scaleAspectFit
-    self.image = ImageHelper.defaultPlaceholder
-  }
 }

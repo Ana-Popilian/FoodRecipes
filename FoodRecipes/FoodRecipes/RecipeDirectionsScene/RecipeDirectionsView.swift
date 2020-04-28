@@ -45,7 +45,7 @@ private extension RecipeDirectionsView {
 private extension RecipeDirectionsView {
   
   func addSubViews() {
-    addSubviewWithoutConstr(recipeDirectionsWebView)
+    addSubviewWC(recipeDirectionsWebView)
   }
   
   func setupConstraints() {

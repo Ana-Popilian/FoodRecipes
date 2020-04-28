@@ -53,7 +53,7 @@ private extension IngredientsTableViewCell {
 private extension IngredientsTableViewCell {
   
   func addSubViews() {
-    addSubviewWithoutConstr(ingredientLabel)
+    addSubviewWC(ingredientLabel)
   }
   
   func setupConstraints() {

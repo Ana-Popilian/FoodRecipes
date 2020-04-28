@@ -52,7 +52,7 @@ private extension FilterCollectionViewCell {
   
   func addSubViews() {
 
-    addSubviewWithoutConstr(filterNameLabel)
+    addSubviewWC(filterNameLabel)
   }
   
   func setupConstraints() {

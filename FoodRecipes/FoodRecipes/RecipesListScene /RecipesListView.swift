@@ -85,7 +85,7 @@ extension RecipesListView: UITableViewDelegate {
 private extension RecipesListView {
   
   func addSubViews() {
-    addSubviewWithoutConstr(recipesListTableView)
+    addSubviewWC(recipesListTableView)
   }
   
   func setupConstraints() {

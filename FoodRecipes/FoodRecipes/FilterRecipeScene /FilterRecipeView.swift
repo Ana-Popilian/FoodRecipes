@@ -26,7 +26,7 @@ final class FilterRecipeView: UIView {
   private var selectedDietParameter: String!
   private var selectedHealthParameters = [String]()
   
-  let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
+//  let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
   let healthFilters = ["peanut-free", "tree-nut-free", "alcohol-free", "vegetarian", "vegan", "sugar-conscious"]
   
   private enum VT {
@@ -103,7 +103,7 @@ private extension FilterRecipeView {
   
   func getDefaultCollectionView() -> UICollectionView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    collectionView.dataSource = self
+//    collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.isScrollEnabled = false
     collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
@@ -144,53 +144,53 @@ extension FilterRecipeView: UISearchBarDelegate {
 
 
 // MARK: - UICollectionViewDataSource
-extension FilterRecipeView: UICollectionViewDataSource {
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if collectionView == dietFilterCollectionView {
-      return dietaryFilters.count
-    }
-    return healthFilters.count
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    if collectionView == dietFilterCollectionView {
-      //swiftlint:disable force_cast
-      let cellA = dietFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
-      
-      let dietRestr = dietaryFilters[indexPath.row]
-      cellA.bindCell(with: dietRestr)
-      return cellA
-    } else {
-      //swiftlint:disable force_cast
-      let cellB = healthFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
-      
-      let healthRestr = healthFilters[indexPath.row]
-      cellB.bindCell(with: healthRestr)
-      return cellB
-    }
-  }
-}
+//extension FilterRecipeView: UICollectionViewDataSource {
+//
+//  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//    if collectionView == dietFilterCollectionView {
+//      return dietaryFilters.count
+//    }
+//    return healthFilters.count
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    if collectionView == dietFilterCollectionView {
+//      //swiftlint:disable force_cast
+//      let cellA = dietFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
+//
+//      let dietRestr = dietaryFilters[indexPath.row]
+//      cellA.bindCell(with: dietRestr)
+//      return cellA
+//    } else {
+//      //swiftlint:disable force_cast
+//      let cellB = healthFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
+//
+//      let healthRestr = healthFilters[indexPath.row]
+//      cellB.bindCell(with: healthRestr)
+//      return cellB
+//    }
+//  }
+//}
 
 
 // MARK: - UIcollectionViewDelegate
 extension FilterRecipeView: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if collectionView == dietFilterCollectionView {
-      let cell = collectionView.cellForItem(at: indexPath)
-      cell?.backgroundColor = ColorHelper.customPurple
-      
-      let diet = dietaryFilters[indexPath.item]
-      selectedDietParameter = diet
-      
-    } else {
-      let cell = collectionView.cellForItem(at: indexPath)
-      cell?.backgroundColor = ColorHelper.customPurple
-      
-      let health = healthFilters[indexPath.item]
-      selectedHealthParameters.append(health)
-    }
-  }
+//  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    if collectionView == dietFilterCollectionView {
+//      let cell = collectionView.cellForItem(at: indexPath)
+//      cell?.backgroundColor = ColorHelper.customPurple
+//
+//      let diet = dietaryFilters[indexPath.item]
+//      selectedDietParameter = diet
+//
+//    } else {
+//      let cell = collectionView.cellForItem(at: indexPath)
+//      cell?.backgroundColor = ColorHelper.customPurple
+//
+//      let health = healthFilters[indexPath.item]
+//      selectedHealthParameters.append(health)
+//    }
+//  }
   
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if collectionView == healthFilterCollectionView {
@@ -208,12 +208,12 @@ extension FilterRecipeView: UICollectionViewDelegate {
 private extension FilterRecipeView {
   
   func addSubViews() {
-    addSubviewWithoutConstr(searchBar)
-    addSubviewWithoutConstr(dietaryLabel)
-    addSubviewWithoutConstr(dietFilterCollectionView)
-    addSubviewWithoutConstr(healthRestrictionLabel)
-    addSubviewWithoutConstr(healthFilterCollectionView)
-    addSubviewWithoutConstr(searchRecipesButton)
+    addSubviewWC(searchBar)
+    addSubviewWC(dietaryLabel)
+    addSubviewWC(dietFilterCollectionView)
+    addSubviewWC(healthRestrictionLabel)
+    addSubviewWC(healthFilterCollectionView)
+    addSubviewWC(searchRecipesButton)
   }
   
   func setupConstraints() {
