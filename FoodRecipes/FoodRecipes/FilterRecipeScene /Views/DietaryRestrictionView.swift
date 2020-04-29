@@ -8,22 +8,20 @@
 
 import UIKit
 
-protocol DietaryRestrictionViewDelegate: FilterRecipeView {
-  
-}
-
 final class DietaryRestrictionView: UIView {
-  
+    
   private var dietaryLabel: UILabel!
   private var dietFilterCollectionView: UICollectionView!
-  private weak var delegate: DietaryRestrictionViewDelegate?
   
-  let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
-  private var selectedDietParameter: String!
+  private let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
+  private var selectedDietParameter: String = ""
   
-  required init(delegate: DietaryRestrictionViewDelegate?) {
+  private enum VT {
+    static let topConstraint: CGFloat = 10
+  }
+  
+  required init() {
     super.init(frame: .zero)
-    self.delegate = delegate
     
     setupDietaryLabel()
     setupDietFilterCollectionView()
@@ -37,6 +35,9 @@ final class DietaryRestrictionView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func getData() -> String {
+    return selectedDietParameter
+  }
 }
 
 
@@ -49,7 +50,8 @@ extension DietaryRestrictionView {
   }
   
   func setupDietFilterCollectionView() {
-    dietFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let layout = CollectionViewLayout()
+    dietFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     dietFilterCollectionView.dataSource = self
     dietFilterCollectionView.delegate = self
     dietFilterCollectionView.isScrollEnabled = false
@@ -63,7 +65,7 @@ extension DietaryRestrictionView {
 extension DietaryRestrictionView: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    4
+    dietaryFilters.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,8 +88,12 @@ extension DietaryRestrictionView: UICollectionViewDelegate {
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.backgroundColor = ColorHelper.customPurple
     
-    let diet = dietaryFilters[indexPath.item]
-    selectedDietParameter = diet
+    selectedDietParameter = dietaryFilters[indexPath.row]
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath)
+    cell?.backgroundColor = ColorHelper.customRed
   }
 }
 
@@ -102,14 +108,14 @@ private extension DietaryRestrictionView {
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      dietaryLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+      dietaryLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: VT.topConstraint),
       dietaryLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       dietaryLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       
-      dietFilterCollectionView.topAnchor.constraint(equalTo: dietaryLabel.bottomAnchor, constant: 10),
+      dietFilterCollectionView.topAnchor.constraint(equalTo: dietaryLabel.bottomAnchor, constant: VT.topConstraint),
       dietFilterCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       dietFilterCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-      dietFilterCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.23)
+      dietFilterCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }
 }
