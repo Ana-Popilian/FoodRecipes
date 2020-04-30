@@ -8,20 +8,21 @@
 
 import UIKit
 
-final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
+final class FilterCollectionViewCell: UICollectionViewCell {
   
   private var filterNameLabel: UILabel!
+  
+  private enum VT {
+    static let cornerRadius: CGFloat = 30
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
     backgroundColor = ColorHelper.customRed
-    layer.cornerRadius = 30
+    layer.cornerRadius = VT.cornerRadius
     
-    setupFilterNamaLabel()
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -39,10 +40,14 @@ final class FilterCollectionViewCell: UICollectionViewCell, Identifiable {
 private extension FilterCollectionViewCell {
   
   func setupFilterNamaLabel() {
-    filterNameLabel = UILabel()
-    filterNameLabel.textAlignment = .center
-    filterNameLabel.textColor = .white
-    filterNameLabel.font = UIFont.systemFont(ofSize: 14)
+    let font = UIFont.systemFont(ofSize: 14)
+    filterNameLabel = UILabel(text: "", font: font, textAlignment: .center, textColor: .white)
+  }
+  
+  func setupUI() {
+    setupFilterNamaLabel()
+    addSubViews()
+    setupConstraints()
   }
 }
 
@@ -51,13 +56,11 @@ private extension FilterCollectionViewCell {
 private extension FilterCollectionViewCell {
   
   func addSubViews() {
-
     addSubviewWC(filterNameLabel)
   }
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      
       filterNameLabel.topAnchor.constraint(equalTo: topAnchor),
       filterNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
       filterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),

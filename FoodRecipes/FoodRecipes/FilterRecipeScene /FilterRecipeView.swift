@@ -51,7 +51,7 @@ extension FilterRecipeView: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     let word = searchText
     typedIngredient = word
-    searchRecipesButton.isEnabled = !word.isBlank
+    checkSearchButtonState()
     setupHideKeyboard()
   }
   
@@ -59,13 +59,20 @@ extension FilterRecipeView: UISearchBarDelegate {
     if text == "\n" {
       return true
     }
-    //swiftlint:disable force_try
-    let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
-    return regex.matches(text)
+    
+    return setupRegex(with: text)
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
+  }
+}
+
+
+extension FilterRecipeView: DietaryRestrictionViewDelegate {
+  
+  func didSelectDietRestrict() {
+    checkSearchButtonState()
   }
 }
 
@@ -91,7 +98,7 @@ private extension FilterRecipeView {
   }
   
   func setupDietaryRestrictionView() {
-    dietaryRestrictionView = DietaryRestrictionView()
+    dietaryRestrictionView = DietaryRestrictionView(delegate: self)
   }
   
   func setupHealthRestrictionView() {
@@ -107,9 +114,10 @@ private extension FilterRecipeView {
   }
   
   @objc func buttonPressed() {
-    let healthData = healthRestrictionView.getData()
-    let dietData = dietaryRestrictionView.getData()
+    let healthData = healthRestrictionView.selectedHealthParameters
+    let dietData = dietaryRestrictionView.selectedDietParameter
     let details = RecipeData(ingredient: typedIngredient, healthRestr: healthData, dietRestr: dietData)
+    
     delegate?.didSelectedSearchRecipes(withDetails: details)
   }
   
@@ -122,6 +130,19 @@ private extension FilterRecipeView {
   
   @objc func resignResponder() {
     endEditing(true)
+  }
+  
+  func setupRegex(with text: String) -> Bool {
+    do {
+      let regex = try NSRegularExpression(pattern: "^[a-zA-Z]+$")
+      return regex.matches(text)
+    } catch {
+      return false
+    }
+  }
+  
+  func checkSearchButtonState() {
+    searchRecipesButton.isEnabled = searchBar.text!.isEmpty == false && dietaryRestrictionView.selectedDietParameter.isEmpty == false
   }
 }
 

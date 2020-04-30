@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RecipesListCell: UITableViewCell, Identifiable {
+final class RecipesListCell: UITableViewCell {
   
   private var recipeContainerView: UIView!
   private var labelsContainerView: UIView!

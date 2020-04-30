@@ -14,7 +14,7 @@ final class HealthRestrictionView: UIView {
   private var healthFilterCollectionView: UICollectionView!
   
   private let healthFilters = ["peanut-free", "tree-nut-free", "alcohol-free", "vegetarian", "vegan", "sugar-conscious"]
-  private var selectedHealthParameters = [String]()
+  private(set) var selectedHealthParameters = [String]()
   
   private enum VT {
     static let topConstraint: CGFloat = 10
@@ -34,31 +34,6 @@ final class HealthRestrictionView: UIView {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  func getData() -> [String] {
-     return selectedHealthParameters
-   }
-}
-
-
-// MARK: - Private Zone
-private extension HealthRestrictionView {
-  
-  func setupHealthRestrLabel() {
-    let font = UIFont.systemFont(ofSize: 16)
-    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
-  }
-  
-  func setupHealthFilterCollectionView() {
-    let layout = CollectionViewLayout()
-    healthFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    healthFilterCollectionView.dataSource = self
-    healthFilterCollectionView.delegate = self
-    healthFilterCollectionView.isScrollEnabled = false
-    healthFilterCollectionView.allowsMultipleSelection = true
-    healthFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
-    healthFilterCollectionView.backgroundColor = ColorHelper.customBlue
-  }
 }
 
 
@@ -70,7 +45,6 @@ extension HealthRestrictionView: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
     //swiftlint:disable:next force_cast
     let cell = healthFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
     
@@ -85,7 +59,6 @@ extension HealthRestrictionView: UICollectionViewDataSource {
 extension HealthRestrictionView: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.backgroundColor = ColorHelper.customPurple
     
@@ -122,5 +95,26 @@ private extension HealthRestrictionView {
       healthFilterCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       healthFilterCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
     ])
+  }
+}
+
+
+// MARK: - Private Zone
+private extension HealthRestrictionView {
+  
+  func setupHealthRestrLabel() {
+    let font = UIFont.systemFont(ofSize: 16)
+    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
+  }
+  
+  func setupHealthFilterCollectionView() {
+    let layout = CollectionViewLayout()
+    healthFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    healthFilterCollectionView.dataSource = self
+    healthFilterCollectionView.delegate = self
+    healthFilterCollectionView.isScrollEnabled = false
+    healthFilterCollectionView.allowsMultipleSelection = true
+    healthFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
+    healthFilterCollectionView.backgroundColor = ColorHelper.customBlue
   }
 }

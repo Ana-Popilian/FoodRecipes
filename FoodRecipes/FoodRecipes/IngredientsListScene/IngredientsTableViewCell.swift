@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class IngredientsTableViewCell: UITableViewCell, Identifiable {
+final class IngredientsTableViewCell: UITableViewCell {
   
   
   private var ingredientLabel: UILabel!

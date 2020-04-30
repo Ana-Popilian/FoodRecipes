@@ -6,16 +6,21 @@
 //  Copyright © 2020 Ana Popilian. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol Identifiable {
+protocol CellIdentifiable {
   
   static var identifier: String { get }
 }
 
-extension Identifiable {
+extension CellIdentifiable {
   
   static var identifier: String {
     return String(describing: self)
   }
 }
+
+
+extension UITableViewCell: CellIdentifiable { }
+
+extension UICollectionViewCell: CellIdentifiable { }
