@@ -13,21 +13,13 @@ final class CollectionViewLayout: UICollectionViewFlowLayout {
   private enum VT {
     static let cellWidth: CGFloat = UIScreen.main.bounds.width * 0.45
     static let cellHeight: CGFloat = UIScreen.main.bounds.width * 0.15
-    
+    static let verticalPadding: CGFloat = 10
   }
   
   override func prepare() {
     super.prepare()
     
-    guard let collectionView = collectionView else {
-      return
-    }
-    
-    let availableWidth = collectionView.bounds.inset(by: collectionView.layoutMargins).width
-    let maxNumColumns = availableWidth / VT.cellWidth
-    let cellWidth = (availableWidth / maxNumColumns).rounded(.down)
-    
-    self.itemSize = CGSize(width: cellWidth, height: VT.cellHeight)
-    self.sectionInsetReference = .fromSafeArea
+    self.itemSize = CGSize(width: VT.cellWidth, height: VT.cellHeight)
+    self.sectionInset = UIEdgeInsets(top: 0, left: VT.verticalPadding, bottom: 0, right: VT.verticalPadding)
   }
 }

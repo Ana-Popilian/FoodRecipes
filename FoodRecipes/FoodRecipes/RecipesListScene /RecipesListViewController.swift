@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipesListViewController: UIViewController {
+final class RecipesListViewController: UIViewController {
   
   private var mainView: RecipesListView!
   private var network: NetworkManager!
@@ -19,7 +19,7 @@ class RecipesListViewController: UIViewController {
     modelData = model
   }
   
-  //swiftlint:disable unavailable_function
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -34,7 +34,10 @@ class RecipesListViewController: UIViewController {
   }
 }
 
+
+// MARK: - RecipesListDelegate
 extension RecipesListViewController: RecipesListDelegate {
+  
   func pushViewController(model: Hit) {
     let nextViewController = IngredientsListViewController(withModel: model.recipe)
     navigationController?.pushViewController(nextViewController, animated: true)

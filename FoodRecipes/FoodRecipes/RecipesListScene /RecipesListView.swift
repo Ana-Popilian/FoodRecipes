@@ -22,10 +22,7 @@ final class RecipesListView: UIView {
     super.init(frame: .zero)
     self.delegate = delegate
     
-    setupRecipesListTableView()
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -49,6 +46,13 @@ private extension RecipesListView {
     recipesListTableView.register(RecipesListCell.self, forCellReuseIdentifier: RecipesListCell.identifier)
     recipesListTableView.rowHeight = 140
     recipesListTableView.separatorStyle = .none
+  }
+  
+  func setupUI() {
+    setupRecipesListTableView()
+    
+    addSubViews()
+    setupConstraints()
   }
 }
 

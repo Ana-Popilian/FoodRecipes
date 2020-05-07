@@ -19,7 +19,7 @@ final class DietaryRestrictionView: UIView {
   private var dietFilterCollectionView: UICollectionView!
   
   private let dietaryFilters = ["balanced", "high-protein", "low-fat", "low-carb"]
-  private(set) var selectedDietParameter: String = ""
+  private(set) var selectedDietParameter = String()
   
   private enum VT {
     static let topConstraint: CGFloat = 10
@@ -75,6 +75,34 @@ extension DietaryRestrictionView: UICollectionViewDelegate {
 }
 
 
+// MARK: - Private Zone
+private extension DietaryRestrictionView {
+  
+  func setupDietaryLabel() {
+    let font = UIFont.systemFont(ofSize: 16)
+    dietaryLabel = UILabel(text: "Dietary Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
+  }
+  
+  func setupDietFilterCollectionView() {
+    let layout = CollectionViewLayout()
+    dietFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    dietFilterCollectionView.dataSource = self
+    dietFilterCollectionView.delegate = self
+    dietFilterCollectionView.isScrollEnabled = false
+    dietFilterCollectionView.backgroundColor = ColorHelper.customYellow
+    dietFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
+  }
+  
+  func setupUI() {
+    setupDietaryLabel()
+    setupDietFilterCollectionView()
+    
+    addSubViews()
+    setupConstraints()
+  }
+}
+
+
 // MARK: - Constraints Zone
 private extension DietaryRestrictionView {
   
@@ -94,33 +122,5 @@ private extension DietaryRestrictionView {
       dietFilterCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       dietFilterCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
-  }
-}
-
-
-// MARK: - Private Zone
-extension DietaryRestrictionView {
-  
-  func setupDietaryLabel() {
-    let font = UIFont.systemFont(ofSize: 16)
-    dietaryLabel = UILabel(text: "Dietary Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
-  }
-  
-  func setupDietFilterCollectionView() {
-    let layout = CollectionViewLayout()
-    dietFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    dietFilterCollectionView.dataSource = self
-    dietFilterCollectionView.delegate = self
-    dietFilterCollectionView.isScrollEnabled = false
-    dietFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
-    dietFilterCollectionView.backgroundColor = ColorHelper.customBlue
-  }
-  
-  func setupUI() {
-    setupDietaryLabel()
-    setupDietFilterCollectionView()
-    
-    addSubViews()
-    setupConstraints()
   }
 }

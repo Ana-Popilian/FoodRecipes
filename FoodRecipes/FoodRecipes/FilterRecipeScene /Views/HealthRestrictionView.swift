@@ -23,11 +23,7 @@ final class HealthRestrictionView: UIView {
   required init() {
     super.init(frame: .zero)
     
-    setupHealthRestrLabel()
-    setupHealthFilterCollectionView()
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -76,6 +72,35 @@ extension HealthRestrictionView: UICollectionViewDelegate {
 }
 
 
+// MARK: - Private Zone
+private extension HealthRestrictionView {
+  
+  func setupHealthRestrLabel() {
+    let font = UIFont.systemFont(ofSize: 16)
+    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
+  }
+  
+  func setupHealthFilterCollectionView() {
+    let layout = CollectionViewLayout()
+    healthFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    healthFilterCollectionView.dataSource = self
+    healthFilterCollectionView.delegate = self
+    healthFilterCollectionView.isScrollEnabled = false
+    healthFilterCollectionView.allowsMultipleSelection = true
+    healthFilterCollectionView.backgroundColor = ColorHelper.customYellow
+    healthFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
+  }
+  
+  func setupUI() {
+    setupHealthRestrLabel()
+    setupHealthFilterCollectionView()
+    
+    addSubViews()
+    setupConstraints()
+  }
+}
+
+
 // MARK: - Constraints Zone
 private extension HealthRestrictionView {
   
@@ -95,26 +120,5 @@ private extension HealthRestrictionView {
       healthFilterCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       healthFilterCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
     ])
-  }
-}
-
-
-// MARK: - Private Zone
-private extension HealthRestrictionView {
-  
-  func setupHealthRestrLabel() {
-    let font = UIFont.systemFont(ofSize: 16)
-    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
-  }
-  
-  func setupHealthFilterCollectionView() {
-    let layout = CollectionViewLayout()
-    healthFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    healthFilterCollectionView.dataSource = self
-    healthFilterCollectionView.delegate = self
-    healthFilterCollectionView.isScrollEnabled = false
-    healthFilterCollectionView.allowsMultipleSelection = true
-    healthFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
-    healthFilterCollectionView.backgroundColor = ColorHelper.customBlue
   }
 }

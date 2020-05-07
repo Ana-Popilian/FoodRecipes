@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeDirectionsViewController: UIViewController {
+final class RecipeDirectionsViewController: UIViewController {
   
   private var mainView: RecipeDirectionsView!
   
@@ -17,7 +17,7 @@ class RecipeDirectionsViewController: UIViewController {
     mainView = RecipeDirectionsView(withUrl: url)
   }
   
-  //swiftlint:disable unavailable_function
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

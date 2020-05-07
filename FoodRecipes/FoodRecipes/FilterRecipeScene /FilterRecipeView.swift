@@ -33,7 +33,7 @@ final class FilterRecipeView: UIView {
   required init(delegate: FilterRecipeDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = ColorHelper.customBlue
+    backgroundColor = ColorHelper.customYellow
     
     setupUI()
   }
@@ -80,16 +80,6 @@ extension FilterRecipeView: DietaryRestrictionViewDelegate {
 // MARK: - Private Zone
 private extension FilterRecipeView {
   
-  func setupUI() {
-    setupSearchBar()
-    setupDietaryRestrictionView()
-    setupHealthRestrictionView()
-    setupSearchRecipesButton()
-    
-    addSubViews()
-    setupConstraints()
-  }
-  
   func setupSearchBar() {
     searchBar = UISearchBar()
     searchBar.placeholder = "Search recipe by ingredient"
@@ -111,6 +101,16 @@ private extension FilterRecipeView {
     searchRecipesButton.layer.cornerRadius = 15
     searchRecipesButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     searchRecipesButton.isEnabled = false
+  }
+  
+  func setupUI() {
+    setupSearchBar()
+    setupDietaryRestrictionView()
+    setupHealthRestrictionView()
+    setupSearchRecipesButton()
+    
+    addSubViews()
+    setupConstraints()
   }
   
   @objc func buttonPressed() {

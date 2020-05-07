@@ -10,7 +10,6 @@ import UIKit
 
 final class IngredientsTableViewCell: UITableViewCell {
   
-  
   private var ingredientLabel: UILabel!
   
   private enum VT {
@@ -21,9 +20,7 @@ final class IngredientsTableViewCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    setupIngredintLabel()
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -39,12 +36,19 @@ final class IngredientsTableViewCell: UITableViewCell {
 
 // MARK: - Private Zone
 private extension IngredientsTableViewCell {
+  
   func setupIngredintLabel() {
     ingredientLabel = UILabel()
     ingredientLabel.font = UIFont.systemFont(ofSize: 16)
     ingredientLabel.textColor = .black
     ingredientLabel.textAlignment = .natural
     ingredientLabel.numberOfLines = 3
+  }
+  
+  func setupUI() {
+    setupIngredintLabel()
+    addSubViews()
+    setupConstraints()
   }
 }
 

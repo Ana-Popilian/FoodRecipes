@@ -17,9 +17,7 @@ final class RecipeDirectionsView: UIView {
     super.init(frame: .zero)
     
     setupRecipeDirectionsWebView(withUrl: url)
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -37,6 +35,11 @@ private extension RecipeDirectionsView {
     let url = URL(string: urlString)!
     let request = URLRequest(url: url)
     recipeDirectionsWebView.load(request)
+  }
+  
+  func setupUI() {
+    addSubViews()
+    setupConstraints()
   }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IngredientsListViewController: UIViewController {
+final class IngredientsListViewController: UIViewController {
   
   private var mainView: IngredientsListView!
   private var modelData: Recipe!
@@ -38,6 +38,8 @@ class IngredientsListViewController: UIViewController {
   }
 }
 
+
+// MARK: - IngredientsListDelegate
 extension IngredientsListViewController: IngredientsListDelegate {
   
   func didPressDirectionsButton() {

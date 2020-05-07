@@ -27,14 +27,7 @@ final class RecipesListCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    setupRecipeContainerView()
-    setupLabelsContainerView()
-    setupRecipeImageView()
-    setupRecipeNameLabel()
-    setupCaloriesValueLabel()
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -60,7 +53,7 @@ private extension RecipesListCell {
   func setupRecipeContainerView() {
     recipeContainerView = UIView()
     recipeContainerView.layer.cornerRadius = 30
-    recipeContainerView.backgroundColor = ColorHelper.customBlue
+    recipeContainerView.backgroundColor = ColorHelper.customYellow
   }
   
   func setupRecipeImageView() {
@@ -89,6 +82,17 @@ private extension RecipesListCell {
     let label = UILabel()
     label.textColor = .black
     return label
+  }
+  
+  func setupUI() {
+    setupRecipeContainerView()
+    setupLabelsContainerView()
+    setupRecipeImageView()
+    setupRecipeNameLabel()
+    setupCaloriesValueLabel()
+    
+    addSubViews()
+    setupConstraints()
   }
 }
 

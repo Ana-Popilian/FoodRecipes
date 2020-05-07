@@ -21,6 +21,7 @@ class FilterRecipeViewController: UIViewController {
 }
 
 
+// MARK: - FilterRecipeDelegate
 extension FilterRecipeViewController: FilterRecipeDelegate {
   
   func didSelectedSearchRecipes(withDetails details: RecipeData) {
@@ -30,9 +31,12 @@ extension FilterRecipeViewController: FilterRecipeDelegate {
                               healths: details.healthRestr,
                               completionHandler: { [weak self] (model) in
                                 
+                                guard let self = self else {
+                                  return }
+                                
                                 DispatchQueue.main.async {
                                   let nextViewController = RecipesListViewController(withModel: model)
-                                  self?.navigationController?.pushViewController(nextViewController, animated: true)
+                                  self.navigationController?.pushViewController(nextViewController, animated: true)
                                 }
                                 
     })

@@ -39,17 +39,9 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   required init(delegate: IngredientsListDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = ColorHelper.customBlue
+    backgroundColor = ColorHelper.customYellow
     
-    setupRecipeImageView()
-    setupRecipeTitleLabel()
-    setupIngredinetsListLabel()
-    setupIngredientsTableView()
-    setupButtonContainerView()
-    setupSeeDirectionsButton()
-    
-    addSubViews()
-    setupConstraints()
+    setupUI()
   }
   
   @available(*, unavailable)
@@ -65,8 +57,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
   func updateImageView(_ image: URL) {
     imageData = image
     let imageUrl = image
-    recipeImageView.downloadImage(from: imageUrl, downloadFinishedHandler: {
-    })
+    recipeImageView.downloadImage(from: imageUrl)
   }
   
   func updateTitleLabel(_ title: String) {
@@ -74,6 +65,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
     recipeTitleLabel.text = recipeTitle
   }
 }
+
 
 // MARK: - Private Zone
 private extension IngredientsListView {
@@ -118,6 +110,18 @@ private extension IngredientsListView {
     seeDirectionsButton.layer.cornerRadius = 15
     seeDirectionsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     seeDirectionsButton.isEnabled = true
+  }
+  
+  func setupUI() {
+    setupRecipeImageView()
+    setupRecipeTitleLabel()
+    setupIngredinetsListLabel()
+    setupIngredientsTableView()
+    setupButtonContainerView()
+    setupSeeDirectionsButton()
+    
+    addSubViews()
+    setupConstraints()
   }
   
   @objc func buttonPressed() {

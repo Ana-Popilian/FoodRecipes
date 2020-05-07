@@ -16,9 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // swiftlint:disable discouraged_optional_collection
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    window = UIWindow(frame: UIScreen.main.bounds)
-    
-    setpBaseViewController()
+    setupBaseViewController()
     return true
   }
 }
@@ -26,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
   
-  func setpBaseViewController() {
+  func setupBaseViewController() {
+    window = UIWindow(frame: UIScreen.main.bounds)
     let viewController = FilterRecipeViewController()
     let navigation = UINavigationController(rootViewController: viewController)
     window?.rootViewController = navigation
