@@ -191,8 +191,8 @@
 		A1EE902B2422366700BA4EB9 /* RecipesListScene  */ = {
 			isa = PBXGroup;
 			children = (
-				A16282742421252800F7AF1D /* RecipesListView.swift */,
 				A16282642421233900F7AF1D /* RecipesListViewController.swift */,
+				A16282742421252800F7AF1D /* RecipesListView.swift */,
 				A1EE903024223A0800BA4EB9 /* RecipesListCell.swift */,
 				A10E22F8242A4429002E65E5 /* RecipeModel.swift */,
 			);

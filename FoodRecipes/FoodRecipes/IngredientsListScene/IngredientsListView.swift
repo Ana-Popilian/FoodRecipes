@@ -78,30 +78,28 @@ private extension IngredientsListView {
   }
   
   func setupRecipeTitleLabel() {
-    recipeTitleLabel = UILabel()
+    let font = UIFont.boldSystemFont(ofSize: 18)
+    recipeTitleLabel = UILabel(font: font, textAlignment: .center, textColor: .white)
     recipeTitleLabel.numberOfLines = 3
-    recipeTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    recipeTitleLabel.textColor = .black
-    recipeTitleLabel.textAlignment = .center
   }
   
   func setupIngredinetsListLabel() {
-    ingredientsTitleLabel = UILabel()
-    ingredientsTitleLabel.text = "Ingredients:"
-    ingredientsTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    ingredientsTitleLabel.textColor = .black
-    ingredientsTitleLabel.textAlignment = .left
+    let font = UIFont.boldSystemFont(ofSize: 17)
+    ingredientsTitleLabel = UILabel(text: "Ingredients:", font: font, textAlignment: .natural, textColor: .white)
+    ingredientsTitleLabel.numberOfLines = 2
   }
   
   func setupIngredientsTableView() {
     ingredientsTableView = UITableView()
     ingredientsTableView.dataSource = self
+    ingredientsTableView.backgroundColor = ColorHelper.customWhite
+    ingredientsTableView.separatorStyle = .none
     ingredientsTableView.register(IngredientsTableViewCell.self, forCellReuseIdentifier: IngredientsTableViewCell.identifier)
   }
   
   func setupButtonContainerView() {
     buttonContainerView = UIView()
-    buttonContainerView.backgroundColor = .white
+    buttonContainerView.backgroundColor = ColorHelper.customWhite
   }
   
   func setupSeeDirectionsButton() {

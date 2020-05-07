@@ -56,7 +56,7 @@ extension HealthRestrictionView: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath)
-    cell?.backgroundColor = ColorHelper.customPurple
+    cell?.backgroundColor = ColorHelper.customRed
     
     let health = healthFilters[indexPath.item]
     selectedHealthParameters.append(health)
@@ -67,7 +67,7 @@ extension HealthRestrictionView: UICollectionViewDelegate {
     let index =  selectedHealthParameters.firstIndex(of: health)!
     selectedHealthParameters.remove(at: index)
     let cell = collectionView.cellForItem(at: indexPath as IndexPath)
-    cell?.backgroundColor = ColorHelper.customRed
+    cell?.backgroundColor = ColorHelper.customYellow
   }
 }
 
@@ -77,7 +77,7 @@ private extension HealthRestrictionView {
   
   func setupHealthRestrLabel() {
     let font = UIFont.systemFont(ofSize: 16)
-    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
+    healthRestrictionLabel = UILabel(text: "Health Restrictions", font: font, textAlignment: .center, textColor: .black)
   }
   
   func setupHealthFilterCollectionView() {
@@ -87,7 +87,7 @@ private extension HealthRestrictionView {
     healthFilterCollectionView.delegate = self
     healthFilterCollectionView.isScrollEnabled = false
     healthFilterCollectionView.allowsMultipleSelection = true
-    healthFilterCollectionView.backgroundColor = ColorHelper.customYellow
+    healthFilterCollectionView.backgroundColor = ColorHelper.customWhite
     healthFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
   }
   

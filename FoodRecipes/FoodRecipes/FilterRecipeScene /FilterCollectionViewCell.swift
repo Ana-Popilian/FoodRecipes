@@ -19,7 +19,7 @@ final class FilterCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = ColorHelper.customRed
+    backgroundColor = ColorHelper.customYellow
     layer.cornerRadius = VT.cornerRadius
     
     setupUI()
@@ -40,8 +40,8 @@ final class FilterCollectionViewCell: UICollectionViewCell {
 private extension FilterCollectionViewCell {
   
   func setupFilterNamaLabel() {
-    let font = UIFont.systemFont(ofSize: 14)
-    filterNameLabel = UILabel(text: "", font: font, textAlignment: .center, textColor: .white)
+    let font = UIFont.systemFont(ofSize: 15)
+    filterNameLabel = UILabel(font: font, textAlignment: .center, textColor: .white)
   }
   
   func setupUI() {

@@ -18,6 +18,12 @@ class FilterRecipeViewController: UIViewController {
     mainView = FilterRecipeView(delegate: self)
     view = mainView
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    navigationController?.setNavigationBarHidden(true, animated: false)
+  }
 }
 
 

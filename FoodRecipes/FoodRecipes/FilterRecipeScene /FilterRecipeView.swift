@@ -33,7 +33,7 @@ final class FilterRecipeView: UIView {
   required init(delegate: FilterRecipeDelegate?) {
     super.init(frame: .zero)
     self.delegate = delegate
-    backgroundColor = ColorHelper.customYellow
+    backgroundColor = ColorHelper.customWhite
     
     setupUI()
   }
@@ -59,7 +59,7 @@ extension FilterRecipeView: UISearchBarDelegate {
     if text == "\n" {
       return true
     }
-    
+
     return setupRegex(with: text)
   }
   
@@ -69,6 +69,7 @@ extension FilterRecipeView: UISearchBarDelegate {
 }
 
 
+// MARK: - DietaryRestrictionViewDelegate
 extension FilterRecipeView: DietaryRestrictionViewDelegate {
   
   func didSelectDietRestrict() {
@@ -83,6 +84,7 @@ private extension FilterRecipeView {
   func setupSearchBar() {
     searchBar = UISearchBar()
     searchBar.placeholder = "Search recipe by ingredient"
+    searchBar.searchTextField.backgroundColor = ColorHelper.customWhite
     searchBar.isTranslucent = false
     searchBar.delegate = self
   }
@@ -163,7 +165,7 @@ private extension FilterRecipeView {
       searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
       
-      dietaryRestrictionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+      dietaryRestrictionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: VT.topContraint),
       dietaryRestrictionView.leadingAnchor.constraint(equalTo: leadingAnchor),
       dietaryRestrictionView.trailingAnchor.constraint(equalTo: trailingAnchor),
       dietaryRestrictionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: VT.dietaryRestrictionViewMult),

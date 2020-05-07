@@ -13,13 +13,14 @@ final class IngredientsTableViewCell: UITableViewCell {
   private var ingredientLabel: UILabel!
   
   private enum VT {
-    static let defaultPadding: CGFloat = 5
-    static let horizontalPadding: CGFloat = 15
+    static let defaultPadding: CGFloat = 10
+    static let horizontalPadding: CGFloat = 20
   }
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
+    backgroundColor = ColorHelper.customWhite
     setupUI()
   }
   
@@ -38,10 +39,8 @@ final class IngredientsTableViewCell: UITableViewCell {
 private extension IngredientsTableViewCell {
   
   func setupIngredintLabel() {
-    ingredientLabel = UILabel()
-    ingredientLabel.font = UIFont.systemFont(ofSize: 16)
-    ingredientLabel.textColor = .black
-    ingredientLabel.textAlignment = .natural
+    let font = UIFont.systemFont(ofSize: 16)
+    ingredientLabel = UILabel(font: font, textAlignment: .natural, textColor: .black)
     ingredientLabel.numberOfLines = 3
   }
   

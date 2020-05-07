@@ -62,7 +62,7 @@ extension DietaryRestrictionView: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath)
-    cell?.backgroundColor = ColorHelper.customPurple
+    cell?.backgroundColor = ColorHelper.customRed
     
     selectedDietParameter = dietaryFilters[indexPath.row]
     delegate?.didSelectDietRestrict()
@@ -70,7 +70,7 @@ extension DietaryRestrictionView: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath)
-    cell?.backgroundColor = ColorHelper.customRed
+    cell?.backgroundColor = ColorHelper.customYellow
   }
 }
 
@@ -80,7 +80,7 @@ private extension DietaryRestrictionView {
   
   func setupDietaryLabel() {
     let font = UIFont.systemFont(ofSize: 16)
-    dietaryLabel = UILabel(text: "Dietary Restrictions", font: font, textAlignment: .center, textColor: ColorHelper.customPurple)
+    dietaryLabel = UILabel(text: "Dietary Restrictions", font: font, textAlignment: .center, textColor: .black)
   }
   
   func setupDietFilterCollectionView() {
@@ -89,7 +89,7 @@ private extension DietaryRestrictionView {
     dietFilterCollectionView.dataSource = self
     dietFilterCollectionView.delegate = self
     dietFilterCollectionView.isScrollEnabled = false
-    dietFilterCollectionView.backgroundColor = ColorHelper.customYellow
+    dietFilterCollectionView.backgroundColor = ColorHelper.customWhite
     dietFilterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
   }
   

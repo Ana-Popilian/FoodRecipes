@@ -26,7 +26,7 @@ final class RecipesListCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+    backgroundColor = ColorHelper.customWhite
     setupUI()
   }
   
@@ -68,20 +68,14 @@ private extension RecipesListCell {
   }
   
   func setupRecipeNameLabel() {
-    recipeNameLabel = getDefaultLabel()
+    let font = UIFont.boldSystemFont(ofSize: 15)
+    recipeNameLabel = UILabel(font: font, textAlignment: .natural, textColor: .white)
     recipeNameLabel.numberOfLines = 3
-    recipeNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
   }
   
   func setupCaloriesValueLabel() {
-    caloriesValueLabel = getDefaultLabel()
-    caloriesValueLabel.font = UIFont.systemFont(ofSize: 14)
-  }
-  
-  func getDefaultLabel() -> UILabel {
-    let label = UILabel()
-    label.textColor = .black
-    return label
+    let font = UIFont.systemFont(ofSize: 15)
+    caloriesValueLabel = UILabel(font: font, textAlignment: .natural, textColor: .white)
   }
   
   func setupUI() {

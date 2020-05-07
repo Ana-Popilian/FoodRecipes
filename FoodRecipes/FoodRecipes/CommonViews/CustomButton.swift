@@ -12,7 +12,7 @@ final class CustomButton: UIButton {
   
   override var isEnabled: Bool {
     didSet {
-      backgroundColor = isEnabled ? ColorHelper.customPink : .systemGray
+      backgroundColor = isEnabled ? ColorHelper.customRed : .systemGray
     }
   }
 }

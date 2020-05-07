@@ -24,6 +24,11 @@ final class RecipesListViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: true)
+  }
+  
   override func loadView() {
     mainView = RecipesListView(delegate: self)
     view = mainView
