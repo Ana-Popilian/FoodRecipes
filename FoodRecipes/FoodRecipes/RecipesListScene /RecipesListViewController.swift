@@ -32,6 +32,8 @@ final class RecipesListViewController: UIViewController {
   override func loadView() {
     mainView = RecipesListView(delegate: self)
     view = mainView
+    
+    navigationController?.navigationBar.barTintColor = ColorHelper.customWhite
   }
   
   override func viewDidLoad() {

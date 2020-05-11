@@ -25,7 +25,7 @@ final class IngredientsListViewController: UIViewController {
   
   override func loadView() {
     navigationItem.title = "List of ingredients"
-    
+   
     mainView = IngredientsListView(delegate: self)
     view = mainView
   }
