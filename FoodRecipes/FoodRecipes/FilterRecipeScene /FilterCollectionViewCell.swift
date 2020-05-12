@@ -30,8 +30,8 @@ final class FilterCollectionViewCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func bindCell(with healthRestr: String) {
-    filterNameLabel.text = healthRestr
+  func bindCell(with restrType: String) {
+    filterNameLabel.text = restrType
   }
 }
 

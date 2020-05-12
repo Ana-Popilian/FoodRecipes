@@ -10,9 +10,10 @@ import UIKit
 
 extension UIImageView {
   
-  func downloadImage(from url: URL, downloadFinishedHandler: (() -> Void)? = nil) {
+  @discardableResult
+  func downloadImage(from url: URL, downloadFinishedHandler: (() -> Void)? = nil) -> URLSessionDataTask {
     let imageFetcher = ImageFetcher()
-    imageFetcher.fetchImage(imageUrl: url, completion: { data in
+    return imageFetcher.fetchImage(imageUrl: url, completion: { data in
       guard let data = data else {
         DispatchQueue.main.async {
           downloadFinishedHandler?()

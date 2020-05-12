@@ -22,7 +22,7 @@ final class DietaryRestrictionView: UIView {
   private(set) var selectedDietParameter = String()
   
   private enum VT {
-    static let topConstraint: CGFloat = 10
+    static let topConstraint: CGFloat = 15
   }
   
   required init(delegate: DietaryRestrictionViewDelegate?) {

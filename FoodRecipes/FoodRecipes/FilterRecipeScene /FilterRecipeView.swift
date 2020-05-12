@@ -59,7 +59,7 @@ extension FilterRecipeView: UISearchBarDelegate {
     if text == "\n" {
       return true
     }
-
+    
     return setupRegex(with: text)
   }
   
@@ -85,7 +85,6 @@ private extension FilterRecipeView {
     searchBar = UISearchBar()
     searchBar.placeholder = "Search recipe by ingredient"
     searchBar.searchTextField.backgroundColor = ColorHelper.customWhite
-    searchBar.isTranslucent = false
     searchBar.delegate = self
   }
   

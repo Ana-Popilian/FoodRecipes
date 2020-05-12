@@ -17,7 +17,7 @@ final class HealthRestrictionView: UIView {
   private(set) var selectedHealthParameters = [String]()
   
   private enum VT {
-    static let topConstraint: CGFloat = 10
+    static let topConstraint: CGFloat = 15
   }
   
   required init() {
@@ -44,8 +44,8 @@ extension HealthRestrictionView: UICollectionViewDataSource {
     //swiftlint:disable:next force_cast
     let cell = healthFilterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
     
-    let dietRestr = healthFilters[indexPath.row]
-    cell.bindCell(with: dietRestr)
+    let healthRestr = healthFilters[indexPath.row]
+    cell.bindCell(with: healthRestr)
     return cell
   }
 }

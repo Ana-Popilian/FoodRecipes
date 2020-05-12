@@ -86,14 +86,12 @@ private extension IngredientsListView {
   func setupIngredinetsListLabel() {
     let font = UIFont.boldSystemFont(ofSize: 17)
     ingredientsTitleLabel = UILabel(text: "Ingredients:", font: font, textAlignment: .natural, textColor: .white)
-    ingredientsTitleLabel.numberOfLines = 2
   }
   
   func setupIngredientsTableView() {
     ingredientsTableView = UITableView()
     ingredientsTableView.dataSource = self
     ingredientsTableView.backgroundColor = ColorHelper.customWhite
-    ingredientsTableView.separatorStyle = .none
     ingredientsTableView.register(IngredientsTableViewCell.self, forCellReuseIdentifier: IngredientsTableViewCell.identifier)
   }
   

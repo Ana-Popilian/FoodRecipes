@@ -10,7 +10,7 @@ import Foundation
 
 final class ImageFetcher: NSObject {
   
-  func fetchImage(imageUrl: URL, completion: @escaping (Data?) -> Void) {
+  func fetchImage(imageUrl: URL, completion: @escaping (Data?) -> Void) -> URLSessionDataTask {
     
     let request = URLRequest(url: imageUrl)
     let sessionConfig = URLSessionConfiguration.default
@@ -22,5 +22,6 @@ final class ImageFetcher: NSObject {
       completion(data)
     })
     task.resume()
+    return task
   }
 }

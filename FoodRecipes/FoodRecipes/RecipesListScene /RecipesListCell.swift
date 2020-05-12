@@ -16,6 +16,8 @@ final class RecipesListCell: UITableViewCell {
   private var recipeNameLabel: UILabel!
   private var caloriesValueLabel: UILabel!
   
+  private var task: URLSessionDataTask!
+  
   private enum VT {
     static let containerMult: CGFloat = 0.8
     static let imageMult: CGFloat = 0.7
@@ -27,6 +29,7 @@ final class RecipesListCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     backgroundColor = ColorHelper.customWhite
+    
     setupUI()
   }
   
@@ -35,14 +38,19 @@ final class RecipesListCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    task.cancel()
+    recipeImageView.image = nil
+  }
+  
   func bindCell(_ model: Hit) {
     recipeNameLabel.text = model.recipe.label
     let calories = Int(model.recipe.calories)
     caloriesValueLabel.text = "Calories: \(calories)"
     
     let imageUrl = model.recipe.image
-    recipeImageView.downloadImage(from: imageUrl, downloadFinishedHandler: {
-    })
+    task = recipeImageView.downloadImage(from: imageUrl)
   }
 }
 
