@@ -1,0 +1,90 @@
+# Check https://github.com/realm/SwiftLint#configuration for custom configurations
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+
+disabled_rules: # Disable rules from the default enabled set.
+  - class_delegate_protocol
+  - identifier_name
+  - attributes
+
+opt_in_rules: # Enable rules not from the default set. Some rules are only opt-in
+  - array_init
+  - attributes
+  - closing_brace
+  - closure_parameter_position
+  - closure_spacing
+  - colon
+  - comma
+  - conditional_returns_on_newline
+  - contains_over_filter_count
+  - control_statement
+  - convenience_type
+  - cyclomatic_complexity
+  - deployment_target
+  - discouraged_direct_init
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - discouraged_optional_collection
+  - duplicate_enum_cases
+  - duplicate_imports
+  - empty_collection_literal
+  - isEmpty
+  - empty_enum_arguments
+  - yoda_condition
+  - weak_delegate
+  - void_return
+  - vertical_whitespace
+  - vertical_whitespace_between_cases
+  - vertical_parameter_alignment
+  - unused_setter_value
+  - unused_optional_binding
+  - unused_import
+  - unused_enumerated
+  - unused_control_flow_label
+  - unused_closure_parameter
+  - unused_capture_list
+  - unowned_variable_capture
+  - unneeded_break_in_switch
+  - unavailable_function
+  - redundant_objc_attribute
+  - redundant_nil_coalescing
+  - number_separator
+  - trailing_whitespace
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly
+force_try:
+  severity: warning # explicitly
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 180
+# they can set both implicitly with an array
+type_body_length:
+  - 100 # warning
+  - 150 # error
+# or they can set both explicitly
+function_body_length:
+  warning: 100
+  error: 200
+
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: true
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+file_length:
+  warning: 250
+  error: 260
+
+type_name:
+  min_length: 2 # only warning
+  max_length: # warning and error
+    warning: 30
+    error: 40
+
+nesting:
+  type_level: 3
