@@ -6,8 +6,8 @@ It is an iOS application designed to help users to find recipes. The required pa
 - The app uses the Recipe Search API from https://www.edamam.com/
 - The filters for search screen are created using collection view
 - A table view was used to display the movie list
-- I approached a programmatic UI
-- No libraries or frameworks were used
+- I approached a programmatic UI and no libraries or frameworks were used
+
 
 ### The following pictures represent the first 3 screens
    
