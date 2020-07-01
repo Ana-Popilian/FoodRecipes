@@ -166,8 +166,8 @@ private extension IngredientsListView {
       recipeImageView.widthAnchor.constraint(equalToConstant: VT.imgViewHeightConstant),
       
       recipeTitleLabel.topAnchor.constraint(equalTo: recipeImageView.bottomAnchor, constant: VT.defaulHeightConst),
-      recipeTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-      recipeTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+      recipeTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: VT.ingrHPadding),
+      recipeTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -VT.ingrHPadding),
       
       ingredientsTitleLabel.topAnchor.constraint(equalTo: recipeTitleLabel.bottomAnchor, constant: VT.defaulHeightConst),
       ingredientsTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: VT.ingrHPadding),

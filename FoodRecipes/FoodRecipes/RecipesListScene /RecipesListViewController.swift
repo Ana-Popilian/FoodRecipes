@@ -34,6 +34,7 @@ final class RecipesListViewController: UIViewController {
     view = mainView
     
     navigationController?.navigationBar.barTintColor = ColorHelper.customWhite
+    navigationController?.navigationBar.tintColor = UIColor.black
   }
   
   override func viewDidLoad() {

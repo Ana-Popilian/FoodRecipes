@@ -22,6 +22,7 @@ final class RecipesListView: UIView {
     super.init(frame: .zero)
     self.delegate = delegate
     
+    backgroundColor = ColorHelper.customWhite
     setupUI()
   }
   
@@ -46,6 +47,7 @@ private extension RecipesListView {
     recipesListTableView.register(RecipesListCell.self, forCellReuseIdentifier: RecipesListCell.identifier)
     recipesListTableView.rowHeight = 140
     recipesListTableView.separatorStyle = .none
+    recipesListTableView.backgroundColor = ColorHelper.customWhite
   }
   
   func setupUI() {
