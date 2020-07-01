@@ -11,9 +11,9 @@ It is an iOS application designed to help users to find recipes. The required pa
 ### The following pictures represent the first 3 screens
    
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/55087937/81804579-9da86000-9519-11ea-9f02-cdbf5da82cf1.png" width="285" height="500">
-  <img src="https://user-images.githubusercontent.com/55087937/81814853-896c5f00-9529-11ea-94a4-dd15295a5e78.png" width="285" height="500"> 
-  <img src="https://user-images.githubusercontent.com/55087937/81814010-77d68780-9528-11ea-8985-d34c472a3e01.png" width="285" height="500">
+  <img src="https://user-images.githubusercontent.com/55087937/86229109-85ef6e80-bb8f-11ea-92be-7e12b8b2a11e.png" width="275" height="450">
+  <img src="https://user-images.githubusercontent.com/55087937/86229168-9f90b600-bb8f-11ea-94c5-a2ff6486537b.png" width="275" height="450"> 
+  <img src="https://user-images.githubusercontent.com/55087937/86229243-ba632a80-bb8f-11ea-8d6d-41bfa42200f2.png" width="275" height="450">
 </p>
 
 ### Used resources:
