@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RecipesListViewController: UIViewController {
+final class RecipesListViewController: UIViewController, RecipeListViewControllerProtocol {
   
   private var mainView: RecipesListView!
   private var network: NetworkManager!
@@ -46,8 +46,8 @@ final class RecipesListViewController: UIViewController {
 // MARK: - RecipesListDelegate
 extension RecipesListViewController: RecipesListDelegate {
   
-  func pushViewController(model: Hit) {
-    let nextViewController = IngredientsListViewController(withModel: model.recipe)
+  func pushViewController(model: Recipe) {
+    let nextViewController = IngredientsListViewController(withModel: model.recipeDetails)
     navigationController?.pushViewController(nextViewController, animated: true)
   }
 }

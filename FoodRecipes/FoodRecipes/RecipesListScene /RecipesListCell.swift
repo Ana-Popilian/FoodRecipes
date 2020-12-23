@@ -44,12 +44,12 @@ final class RecipesListCell: UITableViewCell {
     recipeImageView.image = nil
   }
   
-  func bindCell(_ model: Hit) {
-    recipeNameLabel.text = model.recipe.label
-    let calories = Int(model.recipe.calories)
+  func bindCell(_ model: Recipe) {
+    recipeNameLabel.text = model.recipeDetails.label
+    let calories = Int(model.recipeDetails.calories)
     caloriesValueLabel.text = "Calories: \(calories)"
     
-    let imageUrl = model.recipe.image
+    let imageUrl = model.recipeDetails.image
     task = recipeImageView.downloadImage(from: imageUrl)
   }
 }

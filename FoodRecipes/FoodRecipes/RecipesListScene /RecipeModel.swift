@@ -10,14 +10,24 @@ import Foundation
 
 
 struct RecipeModel: Codable {
-  let hits: [Hit]
-}
-
-struct Hit: Codable {
-  let recipe: Recipe
+  
+  let recipe: [Recipe]
+    
+    private enum CodingKeys: String, CodingKey {
+        case recipe = "hits"
+    }
 }
 
 struct Recipe: Codable {
+    
+  let recipeDetails: RecipeDetails
+    
+    private enum CodingKeys: String, CodingKey {
+        case recipeDetails = "recipe"
+    }
+}
+
+struct RecipeDetails: Codable {
   let label: String
   let image: URL
   let url: String

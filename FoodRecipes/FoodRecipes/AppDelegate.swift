@@ -26,7 +26,7 @@ private extension AppDelegate {
   
   func setupBaseViewController() {
     window = UIWindow(frame: UIScreen.main.bounds)
-    let viewController = FilterRecipeViewController()
+    let viewController = FilterRecipeViewController(injector: AppInjector.shared)
     let navigation = UINavigationController(rootViewController: viewController)
     window?.rootViewController = navigation
     window?.makeKeyAndVisible()

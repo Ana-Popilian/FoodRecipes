@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RecipesListDelegate: UIViewController {
-  func pushViewController(model: Hit)
+  func pushViewController(model: Recipe)
 }
 
 final class RecipesListView: UIView {
@@ -63,13 +63,13 @@ private extension RecipesListView {
 extension RecipesListView: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return recipeData!.hits.count
+    return recipeData!.recipe.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //swiftlint:disable force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: RecipesListCell.identifier, for: indexPath) as! RecipesListCell
-    let data = recipeData?.hits[indexPath.row]
+    let data = recipeData?.recipe[indexPath.row]
     cell.bindCell(data!)
     
     return cell
@@ -80,7 +80,7 @@ extension RecipesListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension RecipesListView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let data = recipeData.hits[indexPath.row]
+    let data = recipeData.recipe[indexPath.row]
     
     delegate?.pushViewController(model: data)
   }

@@ -11,9 +11,9 @@ import UIKit
 final class IngredientsListViewController: UIViewController {
   
   private var mainView: IngredientsListView!
-  private var modelData: Recipe!
+  private var modelData: RecipeDetails!
   
-  required init(withModel model: Recipe) {
+  required init(withModel model: RecipeDetails) {
     super.init(nibName: nil, bundle: nil)
     modelData = model
   }
