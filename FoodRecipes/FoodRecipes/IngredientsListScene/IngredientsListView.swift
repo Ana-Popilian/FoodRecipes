@@ -58,6 +58,7 @@ final class IngredientsListView: UIView, UIScrollViewDelegate {
     imageData = image
     let imageUrl = image
     recipeImageView.downloadImage(from: imageUrl)
+    recipeImageView.accessibilityIdentifier = "ingredients-recipe-image"
   }
   
   func updateTitleLabel(_ title: String) {
@@ -81,9 +82,10 @@ private extension IngredientsListView {
     let font = UIFont.boldSystemFont(ofSize: 18)
     recipeTitleLabel = UILabel(font: font, textAlignment: .center, textColor: .white)
     recipeTitleLabel.numberOfLines = 3
+    recipeTitleLabel.accessibilityIdentifier = "ingredients-recipe-title"
   }
   
-  func setupIngredinetsListLabel() {
+  func setupIngredientsListLabel() {
     let font = UIFont.boldSystemFont(ofSize: 17)
     ingredientsTitleLabel = UILabel(text: "Ingredients:", font: font, textAlignment: .natural, textColor: .white)
   }
@@ -106,12 +108,13 @@ private extension IngredientsListView {
     seeDirectionsButton.layer.cornerRadius = 15
     seeDirectionsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     seeDirectionsButton.isEnabled = true
+    seeDirectionsButton.accessibilityIdentifier = "see-directions-button"
   }
   
   func setupUI() {
     setupRecipeImageView()
     setupRecipeTitleLabel()
-    setupIngredinetsListLabel()
+    setupIngredientsListLabel()
     setupIngredientsTableView()
     setupButtonContainerView()
     setupSeeDirectionsButton()

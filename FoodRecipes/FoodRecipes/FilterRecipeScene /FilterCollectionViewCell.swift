@@ -21,7 +21,8 @@ final class FilterCollectionViewCell: UICollectionViewCell {
     
     backgroundColor = ColorHelper.customYellow
     layer.cornerRadius = VT.cornerRadius
-    
+    accessibilityIdentifier = "filter-collection-view-cell"
+   
     setupUI()
   }
   

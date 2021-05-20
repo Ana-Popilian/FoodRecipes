@@ -42,6 +42,7 @@ private extension IngredientsTableViewCell {
     let font = UIFont.systemFont(ofSize: 16)
     ingredientLabel = UILabel(font: font, textAlignment: .natural, textColor: .black)
     ingredientLabel.numberOfLines = 3
+    ingredientLabel.accessibilityIdentifier = "ingredient-list-label"
   }
   
   func setupUI() {

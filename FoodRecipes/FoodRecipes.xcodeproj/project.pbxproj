@@ -38,11 +38,21 @@
 		A1FA22CA24336E640022FAFD /* IngredientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22C924336E640022FAFD /* IngredientsListView.swift */; };
 		A1FA22CC24336FAC0022FAFD /* IngredientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22CB24336FAC0022FAFD /* IngredientsListViewController.swift */; };
 		A1FA22CE243371CB0022FAFD /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA22CD243371CB0022FAFD /* IngredientsTableViewCell.swift */; };
+		BE301B8F265653F5003BAE80 /* FoodRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE301B8E265653F5003BAE80 /* FoodRecipesUITests.swift */; };
+		BE301B972656603D003BAE80 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE301B962656603D003BAE80 /* XCTestCaseExtension.swift */; };
+		BE301B992656746C003BAE80 /* RecipeListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE301B982656746C003BAE80 /* RecipeListViewControllerTests.swift */; };
 		BEE2BB20258A536000C4BC17 /* FilterRecipeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE2BB1F258A536000C4BC17 /* FilterRecipeViewControllerTests.swift */; };
 		BEE2BB24258A54D500C4BC17 /* FactoryDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE2BB23258A54D500C4BC17 /* FactoryDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BE301B91265653F5003BAE80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A16282552421233900F7AF1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A162825C2421233900F7AF1D;
+			remoteInfo = FoodRecipes;
+		};
 		BEE2BB18258A52FF00C4BC17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A16282552421233900F7AF1D /* Project object */;
@@ -86,6 +96,11 @@
 		A1FA22C924336E640022FAFD /* IngredientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListView.swift; sourceTree = "<group>"; };
 		A1FA22CB24336FAC0022FAFD /* IngredientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewController.swift; sourceTree = "<group>"; };
 		A1FA22CD243371CB0022FAFD /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
+		BE301B8C265653F5003BAE80 /* FoodRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE301B8E265653F5003BAE80 /* FoodRecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipesUITests.swift; sourceTree = "<group>"; };
+		BE301B90265653F5003BAE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE301B962656603D003BAE80 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
+		BE301B982656746C003BAE80 /* RecipeListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewControllerTests.swift; sourceTree = "<group>"; };
 		BEE2BB13258A52FE00C4BC17 /* FoodRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE2BB17258A52FF00C4BC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEE2BB1F258A536000C4BC17 /* FilterRecipeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRecipeViewControllerTests.swift; sourceTree = "<group>"; };
@@ -94,6 +109,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		A162825A2421233900F7AF1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE301B89265653F5003BAE80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,6 +144,9 @@
 		A101A8DD2451D19600BB0942 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A16282602421233900F7AF1D /* AppDelegate.swift */,
+				A162826E2421233F00F7AF1D /* Info.plist */,
+				A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -149,6 +174,7 @@
 			children = (
 				A162825F2421233900F7AF1D /* FoodRecipes */,
 				BEE2BB14258A52FF00C4BC17 /* FoodRecipesTests */,
+				BE301B8D265653F5003BAE80 /* FoodRecipesUITests */,
 				A162825E2421233900F7AF1D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,6 +184,7 @@
 			children = (
 				A162825D2421233900F7AF1D /* FoodRecipes.app */,
 				BEE2BB13258A52FE00C4BC17 /* FoodRecipesTests.xctest */,
+				BE301B8C265653F5003BAE80 /* FoodRecipesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,9 +203,6 @@
 				A1EE90352422490900BA4EB9 /* Extensions */,
 				A17E41DD2432199600BE4FE7 /* Helpers */,
 				A101A8DD2451D19600BB0942 /* Infrastructure */,
-				A162826B2421233F00F7AF1D /* LaunchScreen.storyboard */,
-				A162826E2421233F00F7AF1D /* Info.plist */,
-				A16282602421233900F7AF1D /* AppDelegate.swift */,
 			);
 			path = FoodRecipes;
 			sourceTree = "<group>";
@@ -272,10 +296,29 @@
 			path = IngredientsListScene;
 			sourceTree = "<group>";
 		};
+		BE301B8D265653F5003BAE80 /* FoodRecipesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BE301B9C265692B9003BAE80 /* Extensions */,
+				BE301B8E265653F5003BAE80 /* FoodRecipesUITests.swift */,
+				BE301B90265653F5003BAE80 /* Info.plist */,
+			);
+			path = FoodRecipesUITests;
+			sourceTree = "<group>";
+		};
+		BE301B9C265692B9003BAE80 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE301B962656603D003BAE80 /* XCTestCaseExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BEE2BB14258A52FF00C4BC17 /* FoodRecipesTests */ = {
 			isa = PBXGroup;
 			children = (
 				BEE2BB1F258A536000C4BC17 /* FilterRecipeViewControllerTests.swift */,
+				BE301B982656746C003BAE80 /* RecipeListViewControllerTests.swift */,
 				BEE2BB17258A52FF00C4BC17 /* Info.plist */,
 			);
 			path = FoodRecipesTests;
@@ -302,6 +345,24 @@
 			productReference = A162825D2421233900F7AF1D /* FoodRecipes.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BE301B8B265653F5003BAE80 /* FoodRecipesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE301B95265653F5003BAE80 /* Build configuration list for PBXNativeTarget "FoodRecipesUITests" */;
+			buildPhases = (
+				BE301B88265653F5003BAE80 /* Sources */,
+				BE301B89265653F5003BAE80 /* Frameworks */,
+				BE301B8A265653F5003BAE80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE301B92265653F5003BAE80 /* PBXTargetDependency */,
+			);
+			name = FoodRecipesUITests;
+			productName = FoodRecipesUITests;
+			productReference = BE301B8C265653F5003BAE80 /* FoodRecipesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		BEE2BB12258A52FE00C4BC17 /* FoodRecipesTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEE2BB1C258A52FF00C4BC17 /* Build configuration list for PBXNativeTarget "FoodRecipesTests" */;
@@ -326,12 +387,16 @@
 		A16282552421233900F7AF1D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ana Popilian";
 				TargetAttributes = {
 					A162825C2421233900F7AF1D = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					BE301B8B265653F5003BAE80 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = A162825C2421233900F7AF1D;
 					};
 					BEE2BB12258A52FE00C4BC17 = {
 						CreatedOnToolsVersion = 12.3;
@@ -354,6 +419,7 @@
 			targets = (
 				A162825C2421233900F7AF1D /* FoodRecipes */,
 				BEE2BB12258A52FE00C4BC17 /* FoodRecipesTests */,
+				BE301B8B265653F5003BAE80 /* FoodRecipesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -366,6 +432,13 @@
 				A14E3B4924489842008629A4 /* Colors.xcassets in Resources */,
 				A162826D2421233F00F7AF1D /* LaunchScreen.storyboard in Resources */,
 				A162826A2421233F00F7AF1D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE301B8A265653F5003BAE80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,10 +509,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE301B88265653F5003BAE80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE301B972656603D003BAE80 /* XCTestCaseExtension.swift in Sources */,
+				BE301B8F265653F5003BAE80 /* FoodRecipesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BEE2BB0F258A52FE00C4BC17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE301B992656746C003BAE80 /* RecipeListViewControllerTests.swift in Sources */,
 				BEE2BB20258A536000C4BC17 /* FilterRecipeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +530,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BE301B92265653F5003BAE80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A162825C2421233900F7AF1D /* FoodRecipes */;
+			targetProxy = BE301B91265653F5003BAE80 /* PBXContainerItemProxy */;
+		};
 		BEE2BB19258A52FF00C4BC17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A162825C2421233900F7AF1D /* FoodRecipes */;
@@ -585,7 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FoodRecipes/Info.plist;
+				INFOPLIST_FILE = FoodRecipes/Infrastructure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +690,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FoodRecipes/Info.plist;
+				INFOPLIST_FILE = FoodRecipes/Infrastructure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,6 +699,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		BE301B93265653F5003BAE80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JRP28RN8N6;
+				INFOPLIST_FILE = FoodRecipesUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AP.FoodRecipes.FoodRecipesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodRecipes;
+			};
+			name = Debug;
+		};
+		BE301B94265653F5003BAE80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JRP28RN8N6;
+				INFOPLIST_FILE = FoodRecipesUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AP.FoodRecipes.FoodRecipesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodRecipes;
 			};
 			name = Release;
 		};
@@ -673,6 +803,15 @@
 			buildConfigurations = (
 				A16282722421233F00F7AF1D /* Debug */,
 				A16282732421233F00F7AF1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE301B95265653F5003BAE80 /* Build configuration list for PBXNativeTarget "FoodRecipesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE301B93265653F5003BAE80 /* Debug */,
+				BE301B94265653F5003BAE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

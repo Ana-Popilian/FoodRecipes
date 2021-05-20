@@ -86,6 +86,7 @@ private extension FilterRecipeView {
     searchBar.placeholder = "Search recipe by ingredient"
     searchBar.searchTextField.backgroundColor = ColorHelper.customWhite
     searchBar.delegate = self
+    searchBar.accessibilityIdentifier = "search-bar-by-ingredient"
   }
   
   func setupDietaryRestrictionView() {
@@ -102,6 +103,7 @@ private extension FilterRecipeView {
     searchRecipesButton.layer.cornerRadius = 15
     searchRecipesButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     searchRecipesButton.isEnabled = false
+    searchRecipesButton.accessibilityIdentifier = "search-recipes"
   }
   
   func setupUI() {

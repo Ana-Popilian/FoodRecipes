@@ -59,7 +59,7 @@ extension FilterRecipeViewController: FilterRecipeDelegate {
                                         self?.recipeData = data
                                         
                                         DispatchQueue.main.async {
-                                            let nextViewController = self?.injector.makeRecipeListViewController(withModel: data) //RecipesListViewController(withModel: (data))
+                                            let nextViewController = self?.injector.makeRecipeListViewController(withModel: data) 
                                             self?.navigationController?.pushViewController(nextViewController!, animated: true)
                                         }
                                     }

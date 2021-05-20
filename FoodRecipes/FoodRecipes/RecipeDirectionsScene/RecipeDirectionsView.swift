@@ -35,6 +35,7 @@ private extension RecipeDirectionsView {
     let url = URL(string: urlString)!
     let request = URLRequest(url: url)
     recipeDirectionsWebView.load(request)
+    recipeDirectionsWebView.accessibilityIdentifier = "recipe-directions-web-view"
   }
   
   func setupUI() {

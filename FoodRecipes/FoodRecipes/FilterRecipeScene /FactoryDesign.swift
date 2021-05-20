@@ -8,29 +8,27 @@
 
 import UIKit
 
-protocol RecipeListViewControllerProtocol where Self: UIViewController {
-    
-}
+protocol RecipeListViewControllerProtocol where Self: UIViewController { }
 
 protocol InjectorProtocol {
-    func makeNetworkManager() -> NetworkManagerProtocol
-    func makeRecipeListViewController(withModel: RecipeModel) -> RecipeListViewControllerProtocol
+   func makeNetworkManager() -> NetworkManagerProtocol
+   func makeRecipeListViewController(withModel: RecipeModel) -> RecipeListViewControllerProtocol
 }
 
 struct AppInjector: InjectorProtocol {
-    private init() {}
-    
-    static let shared = AppInjector()
+   private init() {}
+   
+   static let shared = AppInjector()
 }
 
 
 // MARK: - InjectorProtocolExtension
 extension InjectorProtocol {
-    func makeNetworkManager() -> NetworkManagerProtocol {
-        return NetworkManager()
-    }
-    
-    func makeRecipeListViewController(withModel: RecipeModel) -> RecipeListViewControllerProtocol {
-        return RecipesListViewController(withModel: withModel)
-    }
+   func makeNetworkManager() -> NetworkManagerProtocol {
+      NetworkManager()
+   }
+   
+   func makeRecipeListViewController(withModel: RecipeModel) -> RecipeListViewControllerProtocol {
+      RecipesListViewController(withModel: withModel, mainView: RecipesListView())
+   }
 }
